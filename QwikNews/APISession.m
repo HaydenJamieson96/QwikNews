@@ -29,48 +29,19 @@
             NSArray *sourcesArray = [data objectForKey:@"sources"];
             for(NSDictionary *sourcesDict in sourcesArray){
                 NSFetchRequest *fetchRequest = [Category fetchRequest];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier == %@", [sourcesDict objectForKey:@"id"]];
+                [fetchRequest setPredicate:predicate];
+                
                 NSError  *error;
-            
-                BOOL unique = YES;
-
                 NSArray *items = [[[[CoreDataManager sharedManager] persistentContainer] viewContext] executeFetchRequest:fetchRequest error:&error];
 
-                if(items.count > 0){
-                    for(Category *thisCategory in items){
-                        if([thisCategory.identifier isEqualToString: [sourcesDict objectForKey:@"id"]]){
-                            unique = NO;
-                        }
-                    }
-                }
-                if(unique){
+                if(![items firstObject]){
                     Category *newCategory = [[Category alloc] initWithContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext]];
                     newCategory.identifier = [sourcesDict objectForKey:@"id"];
                     newCategory.category = [sourcesDict objectForKey:@"category"];
                     NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.identifier, newCategory.category]);
                     [[CoreDataManager sharedManager] saveContext];
-                    NSError *error= nil;
-                    if (![[[[CoreDataManager sharedManager] persistentContainer] viewContext] save:&error]) {
-                        return;
-                    }
                 }
-                
-                
-                //                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", [sourcesDict objectForKey:@"id"]];
-                //                [fetchRequest setPredicate:predicate];
-                //
-                //                NSError  *error;
-                //                NSArray *objects = [[[[CoreDataManager sharedManager] persistentContainer] viewContext] executeFetchRequest:fetchRequest error:&error];
-                //                if(!objects) {
-                //                    Category *newCategory = [[Category alloc] initWithContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext]];
-                //                    newCategory.identifier = [sourcesDict objectForKey:@"id"];
-                //                    newCategory.category = [sourcesDict objectForKey:@"category"];
-                //                    NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.identifier, newCategory.category]);
-                //                    [[CoreDataManager sharedManager] saveContext];
-                //                }
-                //use obj... e.g.
-                // NSLog(@"%@", obj.identifier);
-                
-                ////
             }
             
             completion();
