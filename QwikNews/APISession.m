@@ -18,7 +18,8 @@
 /*
  @param data - The JSON Data to be parsed, of type Dictionary
  @param completion - A completion block to signal that the function has completed
- @brief - Iterates through JSON data, adds the correct data to a Category entity in Core Data
+ @brief - Iterates through JSON data, adds the correct data to a Category entity in Core Data. Ensures duplicates are not added to CoreData using a predicate
+          This predicate compares the id from the JSON with the core data id to see if it already exists, if it doesnt create a new MOC and save
  */
 +(void)parseCategoryJSONData:(NSDictionary *)data withCompletion:(void (^ __nullable)(void))completion {
     NSError *jsonError = nil;
@@ -33,7 +34,8 @@
                 [fetchRequest setPredicate:predicate];
                 
                 NSError  *error;
-                NSArray *items = [[[[CoreDataManager sharedManager] persistentContainer] viewContext] executeFetchRequest:fetchRequest error:&error];
+
+                NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
 
                 if(![items firstObject]){
                     Category *newCategory = [[Category alloc] initWithContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext]];
@@ -44,7 +46,7 @@
                 }
             }
             
-            completion();
+            
             NSError *contextError = nil;
             if(![context save:&contextError]){
                 NSLog(@"Failure to save context %@\n%@", [contextError localizedDescription], [contextError userInfo]);
@@ -52,6 +54,7 @@
         } else {
             NSLog(@"JSON Error: %@", [jsonError debugDescription]);
         }
+        completion();
     }];
 }
 

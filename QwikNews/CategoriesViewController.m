@@ -143,45 +143,7 @@ static NSString *categoryCellID = @"CategoryCell";
     NSFetchRequest *fetchRequest = [Category fetchRequest];
     NSSortDescriptor *categorySort = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
     fetchRequest.sortDescriptors = @[categorySort];
-    
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %@", ];
-//    [fetchRequest setPredicate:predicate];
-    
-    //persistentContainer.viewContext;     - this is managed object context
-    
-//    BOOL unique = YES;
-//    NSError  *error;
-//    self.collectionViewData = [[[[[CoreDataManager sharedManager] persistentContainer] viewContext] executeFetchRequest:fetchRequest error:&error]mutableCopy];
-//    if(self.collectionViewData.count > 0){
-//        for(Category *thisCategory in self.collectionViewData){
-//            if([thisCategory.identifier isEqualToString: ]){
-//                unique = NO;
-//            }
-//        }
-//    }
-//    if(unique){
-//        Category *thisCategory = [NSEntityDescription insertNewObjectForEntityForName:@"Category" inManagedObjectContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext]];
-//        thisCategory.identifier = //identifier?;
-//        NSError *error= nil;
-//        if (![[[[CoreDataManager sharedManager] persistentContainer] viewContext] save:&error]) {
-//            return;
-//        }
-//    }
-    
-   
-    
-//    Category *category = nil;
-//    for(category in categories?){
-//        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"id == %@", category.identifier];
-//
-//         self.collectionViewData = [[[[[CoreDataManager sharedManager] persistentContainer] viewContext] executeFetchRequest:fetchRequest error:&fetchError] mutableCopy];
-//        if(self.collectionViewData.count == 0){
-//            //found no duplicates so insert new one
-//
-//        }
-//    }
-    
-    
+ 
     NSError *fetchError = nil;
     self.collectionViewData = [[[[[CoreDataManager sharedManager] persistentContainer] viewContext] executeFetchRequest:fetchRequest error:&fetchError] mutableCopy];
     
