@@ -15,6 +15,11 @@
 
 #pragma mark - Cateogry JSON
 
+/*
+ @param data - The JSON Data to be parsed, of type Dictionary
+ @param completion - A completion block to signal that the function has completed
+ @brief - Iterates through JSON data, adds the correct data to a Category entity in Core Data
+ */
 +(void)parseCategoryJSONData:(NSDictionary *)data withCompletion:(void (^ __nullable)(void))completion {
     NSError *jsonError = nil;
 
@@ -23,11 +28,14 @@
         if(!jsonError){
             NSArray *sourcesArray = [data objectForKey:@"sources"];
             for(NSDictionary *sourcesDict in sourcesArray){
+                
+                
+                
                 Category *newCategory = [[Category alloc] initWithContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext]];
                 newCategory.identifier = [sourcesDict valueForKeyPath:@"id"];
                 newCategory.category = [sourcesDict valueForKeyPath:@"category"];
                 NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.identifier, newCategory.category]);
-                [[CoreDataManager sharedManager] saveContext];                
+                [[CoreDataManager sharedManager] saveContext];
             }
             completion();
             NSError *contextError = nil;
@@ -40,6 +48,10 @@
     }];
 }
 
+/*
+ @param completion - A completion block to signal that the function has completed
+ @brief - Uses AFNetworking to set up a data task for the given URL
+ */
 +(void)createCategoryJSONDataSession:(void (^ __nullable)(void))completion {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];

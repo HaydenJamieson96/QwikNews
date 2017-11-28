@@ -11,6 +11,7 @@
 		03CFB0A81FCC3E230063923D /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A71FCC3E230063923D /* CategoriesViewController.m */; };
 		03CFB0AF1FCC415C0063923D /* TopHeadlinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */; };
 		03D8BEE21FCC6DBB002914C4 /* APISession.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D8BEE11FCC6DBB002914C4 /* APISession.m */; };
+		03E974231FCD8FE7008F5611 /* wallpapertrump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03E974221FCD8FE7008F5611 /* wallpapertrump.jpg */; };
 		03ED35321FCC29EB00919765 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED35311FCC29EB00919765 /* AppDelegate.m */; };
 		03ED35381FCC29EB00919765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ED35361FCC29EB00919765 /* Main.storyboard */; };
 		03ED353B1FCC29EB00919765 /* QwikNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 		03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopHeadlinesViewController.m; sourceTree = "<group>"; };
 		03D8BEE01FCC6DBB002914C4 /* APISession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APISession.h; sourceTree = "<group>"; };
 		03D8BEE11FCC6DBB002914C4 /* APISession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APISession.m; sourceTree = "<group>"; };
+		03E974221FCD8FE7008F5611 /* wallpapertrump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpapertrump.jpg; sourceTree = "<group>"; };
 		03ED352D1FCC29EB00919765 /* QwikNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QwikNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03ED35301FCC29EB00919765 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		03ED35311FCC29EB00919765 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				03ED35581FCC2AAA00919765 /* newspaper.png */,
+				03E974221FCD8FE7008F5611 /* wallpapertrump.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				03ED35401FCC29EB00919765 /* LaunchScreen.storyboard in Resources */,
 				03ED353D1FCC29EB00919765 /* Assets.xcassets in Resources */,
 				03ED35591FCC2AAA00919765 /* newspaper.png in Resources */,
+				03E974231FCD8FE7008F5611 /* wallpapertrump.jpg in Resources */,
 				03ED35381FCC29EB00919765 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

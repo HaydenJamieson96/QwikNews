@@ -24,11 +24,15 @@
                                     <size key="itemSize" width="115" height="95"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                    <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
                                 </collectionViewFlowLayout>
+                                <imageView key="backgroundView" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wallpapertrump.jpg" id="GsW-6A-ddv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="0MC-As-ehd" customClass="CategoryCollectionViewCell">
-                                        <rect key="frame" x="5" y="5" width="115" height="95"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" reuseIdentifier="CategoryCell" id="0MC-As-ehd" customClass="CategoryCollectionViewCell">
+                                        <rect key="frame" x="20" y="10" width="115" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="115" height="95"/>
@@ -72,9 +76,15 @@
                     <navigationItem key="navigationItem" title="All Categories" id="6UF-Jp-np0">
                         <barButtonItem key="leftBarButtonItem" systemItem="camera" id="dA8-Mm-QUZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="selectImage:" destination="BYZ-38-t0r" id="iFs-qI-f7z"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Rec." id="GsP-RS-tWU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="recordUser:" destination="BYZ-38-t0r" id="0S0-Tl-ko1"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -185,4 +195,7 @@
             <point key="canvasLocation" x="680" y="541.52923538230891"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="wallpapertrump.jpg" width="750" height="919"/>
+    </resources>
 </document>
