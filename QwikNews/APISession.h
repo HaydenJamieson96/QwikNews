@@ -10,8 +10,8 @@
 
 @interface APISession : NSObject
 
--(void)parseCategoryJSONData:(NSData *)data;
++(void)parseCategoryJSONData:(NSDictionary *_Nonnull)data withCompletion:(void (^ __nullable)(void))completion;
 
--(void)createCategoryJSONDataSession;
++(void)createCategoryJSONDataSession:(void (^ __nullable)(void))completion;
 
 @end

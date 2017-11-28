@@ -20,6 +20,8 @@
 		03ED354D1FCC29EB00919765 /* QwikNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED354C1FCC29EB00919765 /* QwikNewsTests.m */; };
 		03ED35591FCC2AAA00919765 /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ED35581FCC2AAA00919765 /* newspaper.png */; };
 		03F99FC41FCCA5AD00E1E01C /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */; };
+		E1FD44D483EC2B519DC05893 /* libPods-QwikNewsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19D9590171933E9405E640 /* libPods-QwikNewsTests.a */; };
+		FFD3C4B93DC5E1556DDF21D2 /* libPods-QwikNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E6E9BE2693088E6B454025 /* libPods-QwikNews.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,12 @@
 		03ED35581FCC2AAA00919765 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
 		03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		0F19D9590171933E9405E640 /* libPods-QwikNewsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QwikNewsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30E6E9BE2693088E6B454025 /* libPods-QwikNews.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QwikNews.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48A067F1DF2315D1FF98A8B6 /* Pods-QwikNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews.release.xcconfig"; sourceTree = "<group>"; };
+		6621678185CD9FDA0E2A5E68 /* Pods-QwikNewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNewsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNewsTests/Pods-QwikNewsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB337351E2EC6F1550D21D87 /* Pods-QwikNewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNewsTests/Pods-QwikNewsTests.release.xcconfig"; sourceTree = "<group>"; };
+		CE2836A1A57B5BA329934EF1 /* Pods-QwikNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD3C4B93DC5E1556DDF21D2 /* libPods-QwikNews.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1FD44D483EC2B519DC05893 /* libPods-QwikNewsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +93,8 @@
 				03ED35571FCC2A9900919765 /* Resources */,
 				03ED354B1FCC29EB00919765 /* QwikNewsTests */,
 				03ED352E1FCC29EB00919765 /* Products */,
+				3F196D49F2E8C0597CAAD525 /* Pods */,
+				E09B2BD90E22D8ADE0509A7D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +149,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3F196D49F2E8C0597CAAD525 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE2836A1A57B5BA329934EF1 /* Pods-QwikNews.debug.xcconfig */,
+				48A067F1DF2315D1FF98A8B6 /* Pods-QwikNews.release.xcconfig */,
+				6621678185CD9FDA0E2A5E68 /* Pods-QwikNewsTests.debug.xcconfig */,
+				CB337351E2EC6F1550D21D87 /* Pods-QwikNewsTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E09B2BD90E22D8ADE0509A7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30E6E9BE2693088E6B454025 /* libPods-QwikNews.a */,
+				0F19D9590171933E9405E640 /* libPods-QwikNewsTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03ED35511FCC29EB00919765 /* Build configuration list for PBXNativeTarget "QwikNews" */;
 			buildPhases = (
+				673105BC8E999891DDF48902 /* [CP] Check Pods Manifest.lock */,
 				03ED35291FCC29EB00919765 /* Sources */,
 				03ED352A1FCC29EB00919765 /* Frameworks */,
 				03ED352B1FCC29EB00919765 /* Resources */,
+				B2EF13ECD0A14EFC3DA09F29 /* [CP] Embed Pods Frameworks */,
+				57C4732D4D1C5E241327CB68 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03ED35541FCC29EB00919765 /* Build configuration list for PBXNativeTarget "QwikNewsTests" */;
 			buildPhases = (
+				60232CA817C8E5AA1651442D /* [CP] Check Pods Manifest.lock */,
 				03ED35441FCC29EB00919765 /* Sources */,
 				03ED35451FCC29EB00919765 /* Frameworks */,
 				03ED35461FCC29EB00919765 /* Resources */,
+				9E122D1101760E6A7EC1DB76 /* [CP] Embed Pods Frameworks */,
+				2254E446393584FF584471B0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,6 +272,108 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2254E446393584FF584471B0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QwikNewsTests/Pods-QwikNewsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57C4732D4D1C5E241327CB68 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60232CA817C8E5AA1651442D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QwikNewsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		673105BC8E999891DDF48902 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QwikNews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E122D1101760E6A7EC1DB76 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QwikNewsTests/Pods-QwikNewsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2EF13ECD0A14EFC3DA09F29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03ED35291FCC29EB00919765 /* Sources */ = {
@@ -395,6 +535,7 @@
 		};
 		03ED35521FCC29EB00919765 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE2836A1A57B5BA329934EF1 /* Pods-QwikNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -408,6 +549,7 @@
 		};
 		03ED35531FCC29EB00919765 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48A067F1DF2315D1FF98A8B6 /* Pods-QwikNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -421,6 +563,7 @@
 		};
 		03ED35551FCC29EB00919765 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6621678185CD9FDA0E2A5E68 /* Pods-QwikNewsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -435,6 +578,7 @@
 		};
 		03ED35561FCC29EB00919765 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB337351E2EC6F1550D21D87 /* Pods-QwikNewsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

@@ -24,19 +24,13 @@ static NSString *categoryCellID = @"CategoryCell";
 
 @implementation CategoriesViewController
 
-/*
- Left to DO:
- Configure cell with data
- Delete cell stuff
- */
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.collectionViewData = [NSMutableArray array];
     self.manager = [CoreDataManager sharedManager];
-    [self.session createCategoryJSONDataSession];
-    [self fetchCoreData];
+    [APISession createCategoryJSONDataSession:^{
+         [self fetchCoreData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +54,7 @@ static NSString *categoryCellID = @"CategoryCell";
     } else {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
+            NSLog(@"RELOADED");
         });
     }
 }
@@ -81,15 +76,9 @@ static NSString *categoryCellID = @"CategoryCell";
     dispatch_async(dispatch_get_main_queue(), ^{
         [cell.categoryLabel setText:newCategory.category.capitalizedString];
         
-//        CALayer* layer = cell.layer;
-//        
-//        [layer setCornerRadius:4.0f];
-//        [layer setBorderColor:[UIColor colorWithWhite:0.8 alpha:1].CGColor];
-//        [layer setBorderWidth:1.0f];
-        
-        cell.contentView.layer.cornerRadius = cell.frame.size.width / 2;
-       // cell.contentView.layer.cornerRadius = 10.0f;
-        cell.contentView.layer.borderWidth = 3.0f;
+        cell.contentView.layer.cornerRadius = 10.f;
+        cell.contentView.layer.backgroundColor = [UIColor colorWithRed:0.994 green:0.440 blue:0.348 alpha:1.0].CGColor;
+        cell.contentView.layer.borderWidth = 1.0f;
         cell.contentView.layer.borderColor = [UIColor whiteColor].CGColor;
         cell.contentView.layer.masksToBounds = YES;
         
