@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03CFB0A21FCC2D7E0063923D /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */; };
+		03CFB0A81FCC3E230063923D /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A71FCC3E230063923D /* CategoriesViewController.m */; };
+		03CFB0AF1FCC415C0063923D /* TopHeadlinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */; };
+		03D8BEE21FCC6DBB002914C4 /* APISession.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D8BEE11FCC6DBB002914C4 /* APISession.m */; };
 		03ED35321FCC29EB00919765 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED35311FCC29EB00919765 /* AppDelegate.m */; };
-		03ED35351FCC29EB00919765 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED35341FCC29EB00919765 /* ViewController.m */; };
 		03ED35381FCC29EB00919765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ED35361FCC29EB00919765 /* Main.storyboard */; };
 		03ED353B1FCC29EB00919765 /* QwikNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */; };
 		03ED353D1FCC29EB00919765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03ED353C1FCC29EB00919765 /* Assets.xcassets */; };
@@ -16,6 +19,7 @@
 		03ED35431FCC29EB00919765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED35421FCC29EB00919765 /* main.m */; };
 		03ED354D1FCC29EB00919765 /* QwikNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED354C1FCC29EB00919765 /* QwikNewsTests.m */; };
 		03ED35591FCC2AAA00919765 /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ED35581FCC2AAA00919765 /* newspaper.png */; };
+		03F99FC41FCCA5AD00E1E01C /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,11 +33,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03CFB0A01FCC2D7E0063923D /* CoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		03CFB0A61FCC3E230063923D /* CategoriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
+		03CFB0A71FCC3E230063923D /* CategoriesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
+		03CFB0AD1FCC415C0063923D /* TopHeadlinesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopHeadlinesViewController.h; sourceTree = "<group>"; };
+		03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopHeadlinesViewController.m; sourceTree = "<group>"; };
+		03D8BEE01FCC6DBB002914C4 /* APISession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APISession.h; sourceTree = "<group>"; };
+		03D8BEE11FCC6DBB002914C4 /* APISession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APISession.m; sourceTree = "<group>"; };
 		03ED352D1FCC29EB00919765 /* QwikNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QwikNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03ED35301FCC29EB00919765 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		03ED35311FCC29EB00919765 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		03ED35331FCC29EB00919765 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		03ED35341FCC29EB00919765 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		03ED35371FCC29EB00919765 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03ED353A1FCC29EB00919765 /* QwikNews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QwikNews.xcdatamodel; sourceTree = "<group>"; };
 		03ED353C1FCC29EB00919765 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +54,8 @@
 		03ED354C1FCC29EB00919765 /* QwikNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QwikNewsTests.m; sourceTree = "<group>"; };
 		03ED354E1FCC29EB00919765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03ED35581FCC2AAA00919765 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
+		03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,16 +98,24 @@
 		03ED352F1FCC29EB00919765 /* QwikNews */ = {
 			isa = PBXGroup;
 			children = (
+				03D8BEE01FCC6DBB002914C4 /* APISession.h */,
+				03D8BEE11FCC6DBB002914C4 /* APISession.m */,
+				03CFB0A01FCC2D7E0063923D /* CoreDataManager.h */,
+				03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */,
+				03CFB0AD1FCC415C0063923D /* TopHeadlinesViewController.h */,
+				03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */,
+				03CFB0A61FCC3E230063923D /* CategoriesViewController.h */,
+				03CFB0A71FCC3E230063923D /* CategoriesViewController.m */,
 				03ED35301FCC29EB00919765 /* AppDelegate.h */,
 				03ED35311FCC29EB00919765 /* AppDelegate.m */,
-				03ED35331FCC29EB00919765 /* ViewController.h */,
-				03ED35341FCC29EB00919765 /* ViewController.m */,
 				03ED35361FCC29EB00919765 /* Main.storyboard */,
 				03ED353C1FCC29EB00919765 /* Assets.xcassets */,
 				03ED353E1FCC29EB00919765 /* LaunchScreen.storyboard */,
 				03ED35411FCC29EB00919765 /* Info.plist */,
 				03ED35421FCC29EB00919765 /* main.m */,
 				03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */,
+				03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */,
+				03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */,
 			);
 			path = QwikNews;
 			sourceTree = "<group>";
@@ -220,9 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03ED35351FCC29EB00919765 /* ViewController.m in Sources */,
 				03ED353B1FCC29EB00919765 /* QwikNews.xcdatamodeld in Sources */,
+				03CFB0A21FCC2D7E0063923D /* CoreDataManager.m in Sources */,
+				03D8BEE21FCC6DBB002914C4 /* APISession.m in Sources */,
+				03CFB0AF1FCC415C0063923D /* TopHeadlinesViewController.m in Sources */,
+				03F99FC41FCCA5AD00E1E01C /* CategoryCollectionViewCell.m in Sources */,
 				03ED35431FCC29EB00919765 /* main.m in Sources */,
+				03CFB0A81FCC3E230063923D /* CategoriesViewController.m in Sources */,
 				03ED35321FCC29EB00919765 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

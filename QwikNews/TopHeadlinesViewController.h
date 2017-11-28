@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TopHeadlinesViewController.h
 //  QwikNews
 //
 //  Created by TheAppExperts on 11/27/17.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TopHeadlinesViewController : UIViewController
 
 @end
-
