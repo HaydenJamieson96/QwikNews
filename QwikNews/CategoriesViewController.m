@@ -133,11 +133,11 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     
 }
 
+
 #pragma mark - Fetch CoreData
 
 /*
  @brief - Perform a fetch request for the Category entity, sorting by category field. Append each Category object into array for collection view data source
- 
  */
 -(void)fetchCoreData {
     NSFetchRequest *fetchRequest = [Category fetchRequest];
@@ -173,7 +173,7 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     dispatch_async(dispatch_get_main_queue(), ^{
         [cell.categoryLabel setText:newCategory.category.capitalizedString];
         cell.contentView.layer.cornerRadius = 10.f;
-        cell.contentView.layer.backgroundColor = [UIColor colorWithRed:0.994 green:0.440 blue:0.348 alpha:0.6].CGColor;
+        cell.contentView.layer.backgroundColor = [UIColor colorWithRed:0.334 green:0.729 blue:0.425 alpha:1.0].CGColor;
         cell.contentView.layer.borderWidth = 1.0f;
         cell.contentView.layer.borderColor = [UIColor whiteColor].CGColor;
         cell.contentView.layer.masksToBounds = YES;

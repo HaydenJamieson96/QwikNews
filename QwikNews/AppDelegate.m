@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <ChameleonFramework/Chameleon.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Chameleon setGlobalThemeUsingPrimaryColor:(UIColor *)FlatGreenDark withContentStyle:(UIContentStyle)UIContentStyleContrast];
     return YES;
 }
 

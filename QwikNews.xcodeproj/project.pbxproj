@@ -22,8 +22,8 @@
 		03ED354D1FCC29EB00919765 /* QwikNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED354C1FCC29EB00919765 /* QwikNewsTests.m */; };
 		03ED35591FCC2AAA00919765 /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ED35581FCC2AAA00919765 /* newspaper.png */; };
 		03F99FC41FCCA5AD00E1E01C /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */; };
-		E1FD44D483EC2B519DC05893 /* libPods-QwikNewsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F19D9590171933E9405E640 /* libPods-QwikNewsTests.a */; };
-		FFD3C4B93DC5E1556DDF21D2 /* libPods-QwikNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E6E9BE2693088E6B454025 /* libPods-QwikNews.a */; };
+		5EB72C09DB1FEFABA481CD49 /* Pods_QwikNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90373B851AD8A8DE14900D56 /* Pods_QwikNews.framework */; };
+		EF87E38D442F296BA7FDEB23 /* Pods_QwikNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A8DB0514C9979DBED05DBF /* Pods_QwikNewsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,10 +63,10 @@
 		03ED35581FCC2AAA00919765 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
 		03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
-		0F19D9590171933E9405E640 /* libPods-QwikNewsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QwikNewsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		30E6E9BE2693088E6B454025 /* libPods-QwikNews.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QwikNews.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A067F1DF2315D1FF98A8B6 /* Pods-QwikNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews.release.xcconfig"; sourceTree = "<group>"; };
 		6621678185CD9FDA0E2A5E68 /* Pods-QwikNewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNewsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNewsTests/Pods-QwikNewsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		70A8DB0514C9979DBED05DBF /* Pods_QwikNewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QwikNewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90373B851AD8A8DE14900D56 /* Pods_QwikNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QwikNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB337351E2EC6F1550D21D87 /* Pods-QwikNewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNewsTests/Pods-QwikNewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE2836A1A57B5BA329934EF1 /* Pods-QwikNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD3C4B93DC5E1556DDF21D2 /* libPods-QwikNews.a in Frameworks */,
+				5EB72C09DB1FEFABA481CD49 /* Pods_QwikNews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1FD44D483EC2B519DC05893 /* libPods-QwikNewsTests.a in Frameworks */,
+				EF87E38D442F296BA7FDEB23 /* Pods_QwikNewsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +171,8 @@
 		E09B2BD90E22D8ADE0509A7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				30E6E9BE2693088E6B454025 /* libPods-QwikNews.a */,
-				0F19D9590171933E9405E640 /* libPods-QwikNewsTests.a */,
+				90373B851AD8A8DE14900D56 /* Pods_QwikNews.framework */,
+				70A8DB0514C9979DBED05DBF /* Pods_QwikNewsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -372,10 +372,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
