@@ -7,6 +7,7 @@ target 'QwikNews' do
   use_frameworks!
   pod 'AFNetworking', '~> 3.0'
   pod 'ChameleonFramework'
+  pod 'MGSwipeTableCell'
   # Pods for QwikNews
 
   target 'QwikNewsTests' do
