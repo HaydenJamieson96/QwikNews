@@ -20,6 +20,7 @@
  @param completion - A completion block to signal that the function has completed
  @brief - Iterates through JSON data, adds the correct data to a Category entity in Core Data. Ensures duplicates are not added to CoreData using a predicate
           This predicate compares the id from the JSON with the core data id to see if it already exists, if it doesnt create a new MOC and save
+          Uses a hash on the category name to ensure we get unique values at end point
  */
 +(void)parseCategoryJSONData:(NSDictionary *)data withCompletion:(void (^ __nullable)(void))completion {
     NSError *jsonError = nil;
@@ -30,7 +31,11 @@
             NSArray *sourcesArray = [data objectForKey:@"sources"];
             for(NSDictionary *sourcesDict in sourcesArray){
                 NSFetchRequest *fetchRequest = [Category fetchRequest];
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier == %@", [sourcesDict objectForKey:@"id"]];
+                
+                NSString *categoryName = [sourcesDict objectForKey:@"category"];
+                NSUInteger categoryUUID = [[categoryName lowercaseString] hash];
+                
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %lu", categoryUUID];
                 [fetchRequest setPredicate:predicate];
                 
                 NSError  *error;
@@ -38,18 +43,16 @@
                 NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
 
                 if(![items firstObject]){
-                    Category *newCategory = [[Category alloc] initWithContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext]];
-                    newCategory.identifier = [sourcesDict objectForKey:@"id"];
-                    newCategory.category = [sourcesDict objectForKey:@"category"];
-                    NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.identifier, newCategory.category]);
-                    [[CoreDataManager sharedManager] saveContext];
+                    Category *newCategory = [[Category alloc] initWithContext:context];
+                    newCategory.category = categoryName;
+                    newCategory.uuid = [NSString stringWithFormat:@"%lu", categoryUUID];
+                    NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.uuid, newCategory.category]);
+                    
+                    NSError *contextError = nil;
+                    if(![context save:&contextError]){
+                        NSLog(@"Failure to save context %@\n%@", [contextError localizedDescription], [contextError userInfo]);
+                    }
                 }
-            }
-            
-            
-            NSError *contextError = nil;
-            if(![context save:&contextError]){
-                NSLog(@"Failure to save context %@\n%@", [contextError localizedDescription], [contextError userInfo]);
             }
         } else {
             NSLog(@"JSON Error: %@", [jsonError debugDescription]);

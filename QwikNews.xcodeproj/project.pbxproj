@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03C3F5F51FCEC2FB0094D53D /* ArticleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */; };
 		03CFB0A21FCC2D7E0063923D /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */; };
 		03CFB0A81FCC3E230063923D /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A71FCC3E230063923D /* CategoriesViewController.m */; };
 		03CFB0AF1FCC415C0063923D /* TopHeadlinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03C3F5F31FCEC2FB0094D53D /* ArticleListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListViewController.h; sourceTree = "<group>"; };
+		03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListViewController.m; sourceTree = "<group>"; };
 		03CFB0A01FCC2D7E0063923D /* CoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		03CFB0A61FCC3E230063923D /* CategoriesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */,
 				03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */,
 				03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */,
+				03C3F5F31FCEC2FB0094D53D /* ArticleListViewController.h */,
+				03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */,
 			);
 			path = QwikNews;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				03CFB0A21FCC2D7E0063923D /* CoreDataManager.m in Sources */,
 				03D8BEE21FCC6DBB002914C4 /* APISession.m in Sources */,
 				03CFB0AF1FCC415C0063923D /* TopHeadlinesViewController.m in Sources */,
+				03C3F5F51FCEC2FB0094D53D /* ArticleListViewController.m in Sources */,
 				03F99FC41FCCA5AD00E1E01C /* CategoryCollectionViewCell.m in Sources */,
 				03ED35431FCC29EB00919765 /* main.m in Sources */,
 				03CFB0A81FCC3E230063923D /* CategoriesViewController.m in Sources */,

@@ -21,6 +21,7 @@
 @end
 
 static NSString *categoryCellID = @"CategoryCell";
+static NSString *showArticleSegueID = @"ShowArticleList";
 
 @implementation CategoriesViewController
 
@@ -132,7 +133,6 @@ static NSString *categoryCellID = @"CategoryCell";
     
 }
 
-
 #pragma mark - Fetch CoreData
 
 /*
@@ -191,6 +191,10 @@ static NSString *categoryCellID = @"CategoryCell";
     CategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:categoryCellID forIndexPath:indexPath];
     [self configureCell:cell forIndexPath:indexPath];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:showArticleSegueID sender:self];
 }
 
 @end
