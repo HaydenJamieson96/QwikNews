@@ -14,4 +14,8 @@
 
 +(void)createCategoryJSONDataSession:(void (^ __nullable)(void))completion;
 
++(void)createTopHeadlinesJSONDataSession:(void (^ __nullable)(void))completion;
+
++(void)parseArticlesJSONData:(NSDictionary *_Nonnull)data withCompletion:(void (^ __nullable)(void))completion;
+
 @end

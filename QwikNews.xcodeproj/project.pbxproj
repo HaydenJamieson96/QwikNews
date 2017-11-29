@@ -91,6 +91,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03556A6F1FCF0EBE0041E39E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03D8BEE01FCC6DBB002914C4 /* APISession.h */,
+				03D8BEE11FCC6DBB002914C4 /* APISession.m */,
+				03CFB0A01FCC2D7E0063923D /* CoreDataManager.h */,
+				03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		03556A701FCF0ED10041E39E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */,
+				03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03556A711FCF0EDC0041E39E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03C3F5F31FCEC2FB0094D53D /* ArticleListViewController.h */,
+				03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */,
+				03CFB0AD1FCC415C0063923D /* TopHeadlinesViewController.h */,
+				03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */,
+				03CFB0A61FCC3E230063923D /* CategoriesViewController.h */,
+				03CFB0A71FCC3E230063923D /* CategoriesViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		03ED35241FCC29EB00919765 = {
 			isa = PBXGroup;
 			children = (
@@ -115,14 +148,9 @@
 		03ED352F1FCC29EB00919765 /* QwikNews */ = {
 			isa = PBXGroup;
 			children = (
-				03D8BEE01FCC6DBB002914C4 /* APISession.h */,
-				03D8BEE11FCC6DBB002914C4 /* APISession.m */,
-				03CFB0A01FCC2D7E0063923D /* CoreDataManager.h */,
-				03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */,
-				03CFB0AD1FCC415C0063923D /* TopHeadlinesViewController.h */,
-				03CFB0AE1FCC415C0063923D /* TopHeadlinesViewController.m */,
-				03CFB0A61FCC3E230063923D /* CategoriesViewController.h */,
-				03CFB0A71FCC3E230063923D /* CategoriesViewController.m */,
+				03556A6F1FCF0EBE0041E39E /* Model */,
+				03556A701FCF0ED10041E39E /* View */,
+				03556A711FCF0EDC0041E39E /* Controller */,
 				03ED35301FCC29EB00919765 /* AppDelegate.h */,
 				03ED35311FCC29EB00919765 /* AppDelegate.m */,
 				03ED35361FCC29EB00919765 /* Main.storyboard */,
@@ -131,10 +159,6 @@
 				03ED35411FCC29EB00919765 /* Info.plist */,
 				03ED35421FCC29EB00919765 /* main.m */,
 				03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */,
-				03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */,
-				03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */,
-				03C3F5F31FCEC2FB0094D53D /* ArticleListViewController.h */,
-				03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */,
 			);
 			path = QwikNews;
 			sourceTree = "<group>";

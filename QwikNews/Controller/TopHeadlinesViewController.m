@@ -28,12 +28,28 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table View
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 10;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MGSwipeTableCell * cell = [self.tableView dequeueReusableCellWithIdentifier:topHeadlinesCellID];
+    if (!cell) {
+        cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topHeadlinesCellID];
+    }
+    [self configureCell:cell forIndexPath:indexPath];
+    //configure right buttons
+    //    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor flatRedColor]],
+    //                          [MGSwipeButton buttonWithTitle:@"More" backgroundColor:[UIColor flatGrayColor]]];
+    //    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Check" icon:[UIImage imageNamed:@"check.png"] backgroundColor:[UIColor flatGreenColor]],
+    //                         [MGSwipeButton buttonWithTitle:@"Fav" icon:[UIImage imageNamed:@"fav.png"] backgroundColor:[UIColor flatBlueColor]]];
+    return cell;
 }
 
 -(void)configureCell:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
@@ -68,20 +84,6 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     
     cell.layer.cornerRadius = 20;
     cell.layer.masksToBounds = YES;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MGSwipeTableCell * cell = [self.tableView dequeueReusableCellWithIdentifier:topHeadlinesCellID];
-    if (!cell) {
-        cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topHeadlinesCellID];
-    }
-    [self configureCell:cell forIndexPath:indexPath];
-    //configure right buttons
-    //    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor flatRedColor]],
-    //                          [MGSwipeButton buttonWithTitle:@"More" backgroundColor:[UIColor flatGrayColor]]];
-    //    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Check" icon:[UIImage imageNamed:@"check.png"] backgroundColor:[UIColor flatGreenColor]],
-    //                         [MGSwipeButton buttonWithTitle:@"Fav" icon:[UIImage imageNamed:@"fav.png"] backgroundColor:[UIColor flatBlueColor]]];
-    return cell;
 }
 
 @end
