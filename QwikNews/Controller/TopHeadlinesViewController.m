@@ -8,8 +8,17 @@
 
 #import "TopHeadlinesViewController.h"
 #import <ChameleonFramework/Chameleon.h>
+#import "CoreDataManager.h"
+#import "Article+CoreDataClass.h"
+#import "APISession.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface TopHeadlinesViewController ()
+
+@interface TopHeadlinesViewController () <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) CoreDataManager *manager;
+@property (strong, nonatomic) APISession *session;
 
 @end
 
@@ -19,8 +28,16 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.manager = [CoreDataManager sharedManager];
     
+    NSError *fetchError = nil;
+    if(![[self fetchedResultsController]performFetch:&fetchError]){
+        NSLog(@"Unresolved Error: %@, %@", fetchError, [fetchError userInfo]);
+        exit(-1);
+    }
+    
+    [APISession createTopHeadlinesJSONDataSession:nil];
+    [self.tableView setTableFooterView:[UIView new]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,11 +48,15 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
 #pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    id sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    NSUInteger count = [sectionInfo numberOfObjects];
+    return count;
+    //return 10;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [[[self fetchedResultsController] sections] count];
+    //return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -44,25 +65,50 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
         cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topHeadlinesCellID];
     }
     [self configureCell:cell forIndexPath:indexPath];
-    //configure right buttons
-    //    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor flatRedColor]],
-    //                          [MGSwipeButton buttonWithTitle:@"More" backgroundColor:[UIColor flatGrayColor]]];
-    //    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Check" icon:[UIImage imageNamed:@"check.png"] backgroundColor:[UIColor flatGreenColor]],
-    //                         [MGSwipeButton buttonWithTitle:@"Fav" icon:[UIImage imageNamed:@"fav.png"] backgroundColor:[UIColor flatBlueColor]]];
     return cell;
 }
 
--(void)configureCell:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    //Configure what I want the cell to look like now
-    cell.textLabel.text = @"Title";
-    cell.detailTextLabel.text = @"Detail text";
-    //cell.delegate = self; //optional
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+-(void)deleteArticleAtIndexPath:(NSIndexPath *)indexPath {
+    Article *articleToDelete = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [self.manager.persistentContainer.viewContext deleteObject:articleToDelete];
+    NSError *deleteError = nil;
+    [[_fetchedResultsController managedObjectContext] save:&deleteError];
+    if(deleteError)
+        NSLog(@"Unresolved Error: %@, %@", deleteError, [deleteError userInfo]);
+}
+
+-(void)swipeSelectArticleAtIndexPath:(NSIndexPath *)indexPath {
     
-    //configure left buttons
-    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Check" backgroundColor:[UIColor flatGreenColor] callback:^BOOL(MGSwipeTableCell *sender) {
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+-(void)configureCell:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+    Article *article = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    NSString *handleATS = [article.urltoimage stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+    
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:handleATS]
+                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    cell.textLabel.text = article.author;
+    cell.detailTextLabel.text = article.title;
+    
+    //    cell.textLabel.text = @"title";
+    //    cell.detailTextLabel.text =@"detail";
+    
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:[UIColor flatGreenColor] callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"Convenience callback for check buttons!");
+        [self swipeSelectArticleAtIndexPath:indexPath];
         return YES;
-    }],[MGSwipeButton buttonWithTitle:@"Fav" backgroundColor:[UIColor flatBlueColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    }],[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"heart.png"] backgroundColor:[UIColor flatBlueColor] callback:^BOOL(MGSwipeTableCell *sender) {
         return YES;
     }]];
     cell.leftExpansion.buttonIndex = 0;
@@ -70,9 +116,9 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     cell.leftExpansion.fillOnTrigger = YES;
     cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
     
-    //Configure right buttons
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor flatRedColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete.png"] backgroundColor:[UIColor flatRedColor] callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"Convenience callback for Delete button!");
+        [self deleteArticleAtIndexPath:indexPath];
         return YES;
     }],[MGSwipeButton buttonWithTitle:@"More" backgroundColor:[UIColor flatGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
         return YES;
@@ -85,5 +131,75 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     cell.layer.cornerRadius = 20;
     cell.layer.masksToBounds = YES;
 }
+
+#pragma mark - NSFetchedResultsController and CoreData fetch
+
+-(NSFetchedResultsController *)fetchedResultsController {
+    if(_fetchedResultsController != nil)
+        return _fetchedResultsController;
+    
+    NSFetchRequest *fetchRequest = [Article fetchRequest];
+    NSSortDescriptor *authorSort = [NSSortDescriptor sortDescriptorWithKey:@"author" ascending:YES];
+    
+    fetchRequest.sortDescriptors = @[authorSort];
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext] sectionNameKeyPath:nil cacheName:@"Root"];
+    
+    
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    return _fetchedResultsController;
+}
+
+
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    UITableView *tableView = self.tableView;
+    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] forIndexPath:indexPath];
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        default:
+            break;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
+            break;
+    }
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
+
 
 @end

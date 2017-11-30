@@ -11,6 +11,7 @@
 #import "Category+CoreDataClass.h"
 #import "AFNetworking.h"
 #import "Article+CoreDataClass.h"
+#import "NSDictionary+OptionalObjectForKey.h"
 
 @implementation APISession
 
@@ -33,7 +34,7 @@
             for(NSDictionary *sourcesDict in sourcesArray){
                 NSFetchRequest *fetchRequest = [Category fetchRequest];
                 
-                NSString *categoryName = [sourcesDict objectForKey:@"category"];
+                NSString *categoryName = [sourcesDict optionalObjectForKey:@"category" defaultValue:[NSNull null]];
                 NSUInteger categoryUUID = [[categoryName lowercaseString] hash];
                 
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %lu", categoryUUID];
@@ -104,9 +105,7 @@
         if (error) {
             NSLog(@"Error: %@", error);
         } else if (responseObject){
-            [APISession parseArticlesJSONData:responseObject withCompletion:^{
-                completion();
-            }];
+            [APISession parseArticlesJSONData:responseObject withCompletion:completion];
         } else {
             NSLog(@"%@ %@", response, responseObject);
         }
@@ -133,31 +132,31 @@
             for(NSDictionary *articleDict in articlesArray){
                 NSFetchRequest *fetchRequest = [Article fetchRequest];
                 
-               //id and name
+                //id and name
                 NSDictionary *sourceDict = [articleDict objectForKey:@"source"];
                 
                 //id is a string
-                NSString *articleID = [sourceDict objectForKey:@"id"];
-                NSUInteger articleUUID = [[articleID lowercaseString]hash];
+                //NSString *articleID = [sourceDict objectForKey:@"id"];
+                //NSUInteger articleUUID = [[articleID lowercaseString]hash];
                 
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%uuid == %lu", articleUUID];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@", [sourceDict objectForKey:@"id"]];
                 [fetchRequest setPredicate:predicate];
                 
                 NSError  *error;
-
+                
                 NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
-
+                NSLog(@"HERE");
                 if(![items firstObject]){
                     Article *newArticle = [[Article alloc] initWithContext:context];
-                    newArticle.uuid = [NSString stringWithFormat:@"%lu", articleUUID];
-                    newArticle.name = [sourceDict objectForKey:@"name"];
-                    newArticle.author = [articleDict objectForKey:@"author"];
-                    newArticle.title = [articleDict objectForKey:@"title"];
-                    newArticle.desc = [articleDict objectForKey:@"desc"];
-                    newArticle.url = [articleDict objectForKey:@"url"];
-                    newArticle.urltoimage = [articleDict objectForKey:@"urlToImage"];
-                    newArticle.publishedate = [articleDict objectForKey:@"publishedAt"];
-
+                    newArticle.uuid = [sourceDict objectForKey:@"id"];
+                    newArticle.name = [sourceDict optionalObjectForKey:@"name" defaultValue:nil];
+                    newArticle.author = [articleDict optionalObjectForKey:@"author" defaultValue:nil];
+                    newArticle.title = [articleDict optionalObjectForKey:@"title" defaultValue:nil];
+                    newArticle.desc = [articleDict optionalObjectForKey:@"desc" defaultValue:nil];
+                    newArticle.url = [articleDict optionalObjectForKey:@"url"defaultValue:nil];
+                    newArticle.urltoimage = [articleDict optionalObjectForKey:@"urlToImage" defaultValue:nil];
+                    newArticle.publishedate = [articleDict optionalObjectForKey:@"publishedAt" defaultValue:nil];
+                    NSLog(@"%@ %@ %@ %@", newArticle.name, newArticle.author,  newArticle.title, newArticle.desc);
                     NSError *contextError = nil;
                     if(![context save:&contextError]){
                         NSLog(@"Failure to save context %@\n%@", [contextError localizedDescription], [contextError userInfo]);
@@ -167,7 +166,9 @@
         } else {
             NSLog(@"JSON Error: %@", [jsonError debugDescription]);
         }
-        completion();
+        if (completion) {
+            completion();
+        }
     }];
 }
 

@@ -143,6 +143,7 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     NSFetchRequest *fetchRequest = [Category fetchRequest];
     NSSortDescriptor *categorySort = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
     fetchRequest.sortDescriptors = @[categorySort];
+    [fetchRequest setFetchBatchSize:20];
  
     NSError *fetchError = nil;
     self.collectionViewData = [[[[[CoreDataManager sharedManager] persistentContainer] viewContext] executeFetchRequest:fetchRequest error:&fetchError] mutableCopy];
