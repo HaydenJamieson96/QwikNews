@@ -135,6 +135,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		03E0B2F41FD04C1600BAFD99 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				03E0B2F11FD01C3F00BAFD99 /* NSDictionary+OptionalObjectForKey.h */,
+				03E0B2F21FD01C3F00BAFD99 /* NSDictionary+OptionalObjectForKey.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		03ED35241FCC29EB00919765 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +171,7 @@
 				03556A6F1FCF0EBE0041E39E /* Model */,
 				03556A701FCF0ED10041E39E /* View */,
 				03556A711FCF0EDC0041E39E /* Controller */,
+				03E0B2F41FD04C1600BAFD99 /* Categories */,
 				03ED35301FCC29EB00919765 /* AppDelegate.h */,
 				03ED35311FCC29EB00919765 /* AppDelegate.m */,
 				03ED35361FCC29EB00919765 /* Main.storyboard */,
@@ -170,8 +180,6 @@
 				03ED35411FCC29EB00919765 /* Info.plist */,
 				03ED35421FCC29EB00919765 /* main.m */,
 				03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */,
-				03E0B2F11FD01C3F00BAFD99 /* NSDictionary+OptionalObjectForKey.h */,
-				03E0B2F21FD01C3F00BAFD99 /* NSDictionary+OptionalObjectForKey.m */,
 			);
 			path = QwikNews;
 			sourceTree = "<group>";

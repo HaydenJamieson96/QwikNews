@@ -34,7 +34,7 @@
             for(NSDictionary *sourcesDict in sourcesArray){
                 NSFetchRequest *fetchRequest = [Category fetchRequest];
                 
-                NSString *categoryName = [sourcesDict optionalObjectForKey:@"category" defaultValue:[NSNull null]];
+                NSString *categoryName = [sourcesDict optionalObjectForKey:@"category" defaultValue:nil];
                 NSUInteger categoryUUID = [[categoryName lowercaseString] hash];
                 
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %lu", categoryUUID];
@@ -130,29 +130,29 @@
         if(!jsonError){
             NSArray *articlesArray = [data objectForKey:@"articles"];
             for(NSDictionary *articleDict in articlesArray){
+               // [NSFetchedResultsController deleteCacheWithName:nil];
                 NSFetchRequest *fetchRequest = [Article fetchRequest];
                 
                 //id and name
                 NSDictionary *sourceDict = [articleDict objectForKey:@"source"];
                 
                 //id is a string
-                //NSString *articleID = [sourceDict objectForKey:@"id"];
-                //NSUInteger articleUUID = [[articleID lowercaseString]hash];
+                NSString *articleID = [sourceDict objectForKey:@"id"];
+                NSUInteger articleUUID = [[articleID lowercaseString]hash];
                 
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@", [sourceDict objectForKey:@"id"]];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %lu", articleUUID];
                 [fetchRequest setPredicate:predicate];
                 
                 NSError  *error;
                 
                 NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
-                NSLog(@"HERE");
                 if(![items firstObject]){
                     Article *newArticle = [[Article alloc] initWithContext:context];
-                    newArticle.uuid = [sourceDict objectForKey:@"id"];
+                    newArticle.uuid = [NSString stringWithFormat:@"%lu", articleUUID];
                     newArticle.name = [sourceDict optionalObjectForKey:@"name" defaultValue:nil];
                     newArticle.author = [articleDict optionalObjectForKey:@"author" defaultValue:nil];
                     newArticle.title = [articleDict optionalObjectForKey:@"title" defaultValue:nil];
-                    newArticle.desc = [articleDict optionalObjectForKey:@"desc" defaultValue:nil];
+                    newArticle.desc = [articleDict optionalObjectForKey:@"description" defaultValue:nil];
                     newArticle.url = [articleDict optionalObjectForKey:@"url"defaultValue:nil];
                     newArticle.urltoimage = [articleDict optionalObjectForKey:@"urlToImage" defaultValue:nil];
                     newArticle.publishedate = [articleDict optionalObjectForKey:@"publishedAt" defaultValue:nil];

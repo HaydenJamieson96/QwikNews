@@ -29,13 +29,14 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [CoreDataManager sharedManager];
+    //[NSFetchedResultsController deleteCacheWithName:nil];
     
     NSError *fetchError = nil;
+    //self.fetchedResultsController = nil;
     if(![[self fetchedResultsController]performFetch:&fetchError]){
         NSLog(@"Unresolved Error: %@, %@", fetchError, [fetchError userInfo]);
         exit(-1);
     }
-    
     [APISession createTopHeadlinesJSONDataSession:nil];
     [self.tableView setTableFooterView:[UIView new]];
 }
@@ -51,15 +52,13 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     id sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     NSUInteger count = [sectionInfo numberOfObjects];
     return count;
-    //return 10;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[[self fetchedResultsController] sections] count];
-    //return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (MGSwipeTableCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MGSwipeTableCell * cell = [self.tableView dequeueReusableCellWithIdentifier:topHeadlinesCellID];
     if (!cell) {
         cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:topHeadlinesCellID];
@@ -95,15 +94,13 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     NSString *handleATS = [article.urltoimage stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
-    
+   
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:handleATS]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    cell.imageView.clipsToBounds = YES;
     cell.textLabel.text = article.author;
     cell.detailTextLabel.text = article.title;
-    
-    //    cell.textLabel.text = @"title";
-    //    cell.detailTextLabel.text =@"detail";
-    
+
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:[UIColor flatGreenColor] callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"Convenience callback for check buttons!");
         [self swipeSelectArticleAtIndexPath:indexPath];
@@ -128,7 +125,9 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     cell.rightExpansion.fillOnTrigger = YES;
     cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
     
-    cell.layer.cornerRadius = 20;
+    cell.layer.borderColor = [UIColor flatGreenColorDark].CGColor;
+    cell.layer.borderWidth = 1.0f;
+    //cell.layer.cornerRadius = 20;
     cell.layer.masksToBounds = YES;
 }
 
@@ -138,13 +137,15 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     if(_fetchedResultsController != nil)
         return _fetchedResultsController;
     
+    //[NSFetchedResultsController deleteCacheWithName:nil];
     NSFetchRequest *fetchRequest = [Article fetchRequest];
-    NSSortDescriptor *authorSort = [NSSortDescriptor sortDescriptorWithKey:@"author" ascending:YES];
     
-    fetchRequest.sortDescriptors = @[authorSort];
+    NSSortDescriptor *nameSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    
+    fetchRequest.sortDescriptors = @[nameSort];
     [fetchRequest setFetchBatchSize:20];
     
-    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext] sectionNameKeyPath:nil cacheName:@"Root"];
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext] sectionNameKeyPath:nil cacheName:nil];
     
     
     self.fetchedResultsController = theFetchedResultsController;
