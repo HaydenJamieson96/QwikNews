@@ -12,6 +12,7 @@
 #import "Article+CoreDataClass.h"
 #import "APISession.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ArticleInfoViewController.h"
 
 
 @interface TopHeadlinesViewController () <NSFetchedResultsControllerDelegate>
@@ -19,6 +20,8 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) CoreDataManager *manager;
 @property (strong, nonatomic) APISession *session;
+@property (strong, nonatomic) ArticleInfoViewController *articleInfoController;
+
 
 @end
 
@@ -49,6 +52,12 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     // Dispose of any resources that can be recreated.
 }
 
+/*
+  @brief - This function is called every time a MOC is updated in the app. Configured in the view did load. We know that data has changed and hence we check to see if it is data we care about
+       We check to see if we are on the main therad, if we are not on the main thread we recursively call ourselves from the main thread and wait. This will guarantee that what happens next will always be on the main thread.
+       The final line of code is the kicker - it tells the main NSManagedObjectContext that the underlying data has changed and that it needs to update itself. This will in turn cause the NSFetchedResultsController to get woken up which finally updates the UI.
+  @param notificaton - the notification that is triggered from our viewDidLoad
+ */
 -(void)contextChanged:(NSNotification *)notification
 {
     NSManagedObjectContext *context = [[[CoreDataManager sharedManager] persistentContainer] viewContext];
@@ -95,7 +104,9 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 }
 
 -(void)swipeSelectArticleAtIndexPath:(NSIndexPath *)indexPath {
+    self.manager.selectedArticle = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self performSegueWithIdentifier:showArticleInfoSegueID sender:self];
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,7 +121,9 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     NSString *handleATS = [article.urltoimage stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:handleATS]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    cell.imageView.clipsToBounds = YES;
+
+    cell.imageView.autoresizingMask = UIViewAutoresizingNone;
+    
     [cell.textLabel setTextColor:[UIColor flatGreenColorDark]];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:20.0];
     cell.textLabel.text = article.author;
@@ -118,16 +131,20 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     cell.detailTextLabel.font = [UIFont fontWithName:@"Avenir" size:16.0];
     
     [self configureSwipeButtons:cell forIndexPath:indexPath];
-    
-    //cell.layer.borderColor = [UIColor flatGreenColorDark].CGColor;
-    //cell.layer.borderWidth = 1.0f;
+
     cell.layer.cornerRadius = 20;
     cell.layer.masksToBounds = YES;
+    cell.imageView.clipsToBounds = YES;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80;
 }
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [cell.imageView setFrame:CGRectMake(0, 0, 10, 10)];
+//    cell.imageView.clipsToBounds = YES;
+//}
 
 -(void)configureSwipeButtons:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:[UIColor flatGreenColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
@@ -225,6 +242,5 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
 }
-
 
 @end

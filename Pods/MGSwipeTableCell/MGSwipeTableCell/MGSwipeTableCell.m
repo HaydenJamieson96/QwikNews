@@ -596,6 +596,8 @@ static inline CGFloat mgEaseInOutBounce(CGFloat t, CGFloat b, CGFloat c) {
 -(void) awakeFromNib
 {
     [super awakeFromNib];
+    self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.contentView.translatesAutoresizingMaskIntoConstraints = YES;
     if (!_panRecognizer) {
         [self initViews:YES];
     }

@@ -10,6 +10,8 @@
 		032AE4221FD00A0800F3E020 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 032AE41F1FD00A0700F3E020 /* delete.png */; };
 		032AE4231FD00A0800F3E020 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 032AE4201FD00A0800F3E020 /* heart.png */; };
 		032AE4241FD00A0800F3E020 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 032AE4211FD00A0800F3E020 /* checked.png */; };
+		0337EE561FD1935400D2E05A /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 0337EE551FD1935400D2E05A /* news.png */; };
+		0337EE581FD19D7900D2E05A /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 0337EE571FD19D7900D2E05A /* time.png */; };
 		03C3F5F51FCEC2FB0094D53D /* ArticleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */; };
 		03CFB0A21FCC2D7E0063923D /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */; };
 		03CFB0A81FCC3E230063923D /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A71FCC3E230063923D /* CategoriesViewController.m */; };
@@ -47,6 +49,8 @@
 		032AE41F1FD00A0700F3E020 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		032AE4201FD00A0800F3E020 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		032AE4211FD00A0800F3E020 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		0337EE551FD1935400D2E05A /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
+		0337EE571FD19D7900D2E05A /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		03C3F5F31FCEC2FB0094D53D /* ArticleListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListViewController.h; sourceTree = "<group>"; };
 		03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListViewController.m; sourceTree = "<group>"; };
 		03CFB0A01FCC2D7E0063923D /* CoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 		03ED35571FCC2A9900919765 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0337EE571FD19D7900D2E05A /* time.png */,
+				0337EE551FD1935400D2E05A /* news.png */,
 				03E0B2EF1FD0135E00BAFD99 /* placeholder.png */,
 				03ED40751FD15C4E009FD9C6 /* placeholder256.png */,
 				032AE4211FD00A0800F3E020 /* checked.png */,
@@ -323,6 +329,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03E0B2F01FD0135F00BAFD99 /* placeholder.png in Resources */,
+				0337EE561FD1935400D2E05A /* news.png in Resources */,
+				0337EE581FD19D7900D2E05A /* time.png in Resources */,
 				032AE4231FD00A0800F3E020 /* heart.png in Resources */,
 				032AE4221FD00A0800F3E020 /* delete.png in Resources */,
 				03ED40761FD15C4F009FD9C6 /* placeholder256.png in Resources */,
@@ -434,6 +442,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CBZSplashView/CBZSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -441,6 +450,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CBZSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",

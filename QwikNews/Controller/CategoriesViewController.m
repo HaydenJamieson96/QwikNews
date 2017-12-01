@@ -11,6 +11,7 @@
 #import "APISession.h"
 #import "Category+CoreDataClass.h"
 #import "CategoryCollectionViewCell.h"
+#import "CBZSplashView.h"
 
 @interface CategoriesViewController ()
 
@@ -27,6 +28,17 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImage *icon = [UIImage imageNamed:@"news.png"];
+    UIColor *color = [UIColor colorWithRed:0.334 green:0.729 blue:0.425 alpha:1.0];
+    CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];
+    
+    // customize duration, icon size, or icon color here;
+    splashView.animationDuration = 1.6;
+    
+    [self.view addSubview:splashView];
+    [splashView startAnimation];
+    
+    
     self.collectionViewData = [NSMutableArray array];
     self.manager = [CoreDataManager sharedManager];
     [APISession createCategoryJSONDataSession:^{

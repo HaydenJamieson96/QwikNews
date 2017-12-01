@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Article+CoreDataClass.h"
 
 @interface CoreDataManager : NSObject
 
@@ -16,5 +17,9 @@
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
 - (void)saveContext;
+
+@property (strong, nonatomic) Article *selectedArticle;
+
+@property (strong, nonatomic) NSCache *imageCache;
 
 @end

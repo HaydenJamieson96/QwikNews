@@ -9,6 +9,7 @@ target 'QwikNews' do
   pod 'ChameleonFramework'
   pod 'MGSwipeTableCell'
   pod 'SDWebImage', '~> 4.0'
+  pod 'CBZSplashView', '~> 1.0.0'
   # Pods for QwikNews
 
   target 'QwikNewsTests' do
