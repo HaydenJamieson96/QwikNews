@@ -32,6 +32,7 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     self.manager = [CoreDataManager sharedManager];
     [self.navigationController setHidesNavigationBarHairline:YES];
     [NSFetchedResultsController deleteCacheWithName:nil];

@@ -48,7 +48,7 @@
                 if(![items firstObject]){
                     Category *newCategory = [[Category alloc] initWithContext:context];
                     newCategory.category = categoryName;
-                    newCategory.uuid = [NSString stringWithFormat:@"%lu", categoryUUID];
+                    newCategory.uuid = [NSString stringWithFormat:@"%lu", (unsigned long)categoryUUID];
                     NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.uuid, newCategory.category]);
                     
                     NSError *contextError = nil;
@@ -147,7 +147,7 @@
                 NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
                 if(![items firstObject]){
                     Article *newArticle = [[Article alloc] initWithContext:context];
-                    newArticle.uuid = [NSString stringWithFormat:@"%lu", articleUUID];
+                    newArticle.uuid = [NSString stringWithFormat:@"%lu", (unsigned long)articleUUID];
                     newArticle.name = [sourceDict optionalObjectForKey:@"name" defaultValue:nil];
                     newArticle.author = [articleDict optionalObjectForKey:@"author" defaultValue:nil];
                     newArticle.title = [articleDict optionalObjectForKey:@"title" defaultValue:nil];

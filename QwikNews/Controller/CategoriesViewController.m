@@ -28,6 +28,8 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
+    
     UIImage *icon = [UIImage imageNamed:@"news.png"];
     UIColor *color = [UIColor colorWithRed:0.334 green:0.729 blue:0.425 alpha:1.0];
     CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];

@@ -134,6 +134,8 @@
 		03556A711FCF0EDC0041E39E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				03ED40771FD161EB009FD9C6 /* ArticleInfoViewController.h */,
+				03ED40781FD161EB009FD9C6 /* ArticleInfoViewController.m */,
 				03C3F5F31FCEC2FB0094D53D /* ArticleListViewController.h */,
 				03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */,
 				03CFB0AD1FCC415C0063923D /* TopHeadlinesViewController.h */,
@@ -189,8 +191,6 @@
 				03ED35411FCC29EB00919765 /* Info.plist */,
 				03ED35421FCC29EB00919765 /* main.m */,
 				03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */,
-				03ED40771FD161EB009FD9C6 /* ArticleInfoViewController.h */,
-				03ED40781FD161EB009FD9C6 /* ArticleInfoViewController.m */,
 			);
 			path = QwikNews;
 			sourceTree = "<group>";
@@ -567,7 +567,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -616,7 +616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -629,7 +629,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHW5C4JA8E;
 				INFOPLIST_FILE = QwikNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheAppExperts.QwikNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -643,7 +645,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WHW5C4JA8E;
 				INFOPLIST_FILE = QwikNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheAppExperts.QwikNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -31,10 +31,9 @@
 }
 
 -(void)configurePageInfoWithArticle:(Article *)article {
+    self.navigationItem.title = article.name;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:article.urltoimage]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-
-    self.nameLabel.text = article.name;
     self.authorLabel.text = article.author;
     self.titleLabel.text = article.title;
     self.descriptionLabel.text = article.desc;
