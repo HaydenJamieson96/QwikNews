@@ -26,6 +26,8 @@
 		03ED35431FCC29EB00919765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED35421FCC29EB00919765 /* main.m */; };
 		03ED354D1FCC29EB00919765 /* QwikNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED354C1FCC29EB00919765 /* QwikNewsTests.m */; };
 		03ED35591FCC2AAA00919765 /* newspaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ED35581FCC2AAA00919765 /* newspaper.png */; };
+		03ED40761FD15C4F009FD9C6 /* placeholder256.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ED40751FD15C4E009FD9C6 /* placeholder256.png */; };
+		03ED40791FD161EB009FD9C6 /* ArticleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ED40781FD161EB009FD9C6 /* ArticleInfoViewController.m */; };
 		03F99FC41FCCA5AD00E1E01C /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */; };
 		5EB72C09DB1FEFABA481CD49 /* Pods_QwikNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90373B851AD8A8DE14900D56 /* Pods_QwikNews.framework */; };
 		EF87E38D442F296BA7FDEB23 /* Pods_QwikNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A8DB0514C9979DBED05DBF /* Pods_QwikNewsTests.framework */; };
@@ -72,6 +74,9 @@
 		03ED354C1FCC29EB00919765 /* QwikNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QwikNewsTests.m; sourceTree = "<group>"; };
 		03ED354E1FCC29EB00919765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03ED35581FCC2AAA00919765 /* newspaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newspaper.png; sourceTree = "<group>"; };
+		03ED40751FD15C4E009FD9C6 /* placeholder256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder256.png; path = ../../../../Downloads/placeholder256.png; sourceTree = "<group>"; };
+		03ED40771FD161EB009FD9C6 /* ArticleInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleInfoViewController.h; sourceTree = "<group>"; };
+		03ED40781FD161EB009FD9C6 /* ArticleInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleInfoViewController.m; sourceTree = "<group>"; };
 		03F99FC21FCCA5AD00E1E01C /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		03F99FC31FCCA5AD00E1E01C /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		48A067F1DF2315D1FF98A8B6 /* Pods-QwikNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-QwikNews/Pods-QwikNews.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +185,8 @@
 				03ED35411FCC29EB00919765 /* Info.plist */,
 				03ED35421FCC29EB00919765 /* main.m */,
 				03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */,
+				03ED40771FD161EB009FD9C6 /* ArticleInfoViewController.h */,
+				03ED40781FD161EB009FD9C6 /* ArticleInfoViewController.m */,
 			);
 			path = QwikNews;
 			sourceTree = "<group>";
@@ -197,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				03E0B2EF1FD0135E00BAFD99 /* placeholder.png */,
+				03ED40751FD15C4E009FD9C6 /* placeholder256.png */,
 				032AE4211FD00A0800F3E020 /* checked.png */,
 				032AE41F1FD00A0700F3E020 /* delete.png */,
 				032AE4201FD00A0800F3E020 /* heart.png */,
@@ -317,6 +325,7 @@
 				03E0B2F01FD0135F00BAFD99 /* placeholder.png in Resources */,
 				032AE4231FD00A0800F3E020 /* heart.png in Resources */,
 				032AE4221FD00A0800F3E020 /* delete.png in Resources */,
+				03ED40761FD15C4F009FD9C6 /* placeholder256.png in Resources */,
 				03ED35401FCC29EB00919765 /* LaunchScreen.storyboard in Resources */,
 				03ED353D1FCC29EB00919765 /* Assets.xcassets in Resources */,
 				03ED35591FCC2AAA00919765 /* newspaper.png in Resources */,
@@ -453,6 +462,7 @@
 				03D8BEE21FCC6DBB002914C4 /* APISession.m in Sources */,
 				03CFB0AF1FCC415C0063923D /* TopHeadlinesViewController.m in Sources */,
 				03C3F5F51FCEC2FB0094D53D /* ArticleListViewController.m in Sources */,
+				03ED40791FD161EB009FD9C6 /* ArticleInfoViewController.m in Sources */,
 				03F99FC41FCCA5AD00E1E01C /* CategoryCollectionViewCell.m in Sources */,
 				03ED35431FCC29EB00919765 /* main.m in Sources */,
 				03E0B2F31FD01C3F00BAFD99 /* NSDictionary+OptionalObjectForKey.m in Sources */,

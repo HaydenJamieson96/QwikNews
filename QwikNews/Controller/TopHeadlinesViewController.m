@@ -23,27 +23,41 @@
 @end
 
 static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
+static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 
 @implementation TopHeadlinesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [CoreDataManager sharedManager];
-    //[NSFetchedResultsController deleteCacheWithName:nil];
+    [self.navigationController setHidesNavigationBarHairline:YES];
+    [NSFetchedResultsController deleteCacheWithName:nil];
     
     NSError *fetchError = nil;
-    //self.fetchedResultsController = nil;
     if(![[self fetchedResultsController]performFetch:&fetchError]){
         NSLog(@"Unresolved Error: %@, %@", fetchError, [fetchError userInfo]);
         exit(-1);
     }
     [APISession createTopHeadlinesJSONDataSession:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contextChanged:) name:NSManagedObjectContextDidSaveNotification object:nil];
     [self.tableView setTableFooterView:[UIView new]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)contextChanged:(NSNotification *)notification
+{
+    NSManagedObjectContext *context = [[[CoreDataManager sharedManager] persistentContainer] viewContext];
+    if ([notification object] == context) return;
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(contextChanged:) withObject:notification waitUntilDone:YES];
+        return;
+    }
+    [context mergeChangesFromContextDidSaveNotification:notification];
 }
 
 #pragma mark - Table View
@@ -81,11 +95,11 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
 }
 
 -(void)swipeSelectArticleAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self performSegueWithIdentifier:showArticleInfoSegueID sender:self];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self swipeSelectArticleAtIndexPath:indexPath];
 }
 
 -(void)configureCell:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
@@ -94,14 +108,29 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     NSString *handleATS = [article.urltoimage stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
-   
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:handleATS]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     cell.imageView.clipsToBounds = YES;
+    [cell.textLabel setTextColor:[UIColor flatGreenColorDark]];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:20.0];
     cell.textLabel.text = article.author;
     cell.detailTextLabel.text = article.title;
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Avenir" size:16.0];
+    
+    [self configureSwipeButtons:cell forIndexPath:indexPath];
+    
+    //cell.layer.borderColor = [UIColor flatGreenColorDark].CGColor;
+    //cell.layer.borderWidth = 1.0f;
+    cell.layer.cornerRadius = 20;
+    cell.layer.masksToBounds = YES;
+}
 
-    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:[UIColor flatGreenColor] callback:^BOOL(MGSwipeTableCell *sender) {
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
+-(void)configureSwipeButtons:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:[UIColor flatGreenColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"Convenience callback for check buttons!");
         [self swipeSelectArticleAtIndexPath:indexPath];
         return YES;
@@ -124,11 +153,6 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     cell.rightExpansion.threshold = 2.0;
     cell.rightExpansion.fillOnTrigger = YES;
     cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-    
-    cell.layer.borderColor = [UIColor flatGreenColorDark].CGColor;
-    cell.layer.borderWidth = 1.0f;
-    //cell.layer.cornerRadius = 20;
-    cell.layer.masksToBounds = YES;
 }
 
 #pragma mark - NSFetchedResultsController and CoreData fetch
@@ -137,7 +161,7 @@ static NSString *topHeadlinesCellID = @"TopHeadlinesCell";
     if(_fetchedResultsController != nil)
         return _fetchedResultsController;
     
-    //[NSFetchedResultsController deleteCacheWithName:nil];
+    [NSFetchedResultsController deleteCacheWithName:nil];
     NSFetchRequest *fetchRequest = [Article fetchRequest];
     
     NSSortDescriptor *nameSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];

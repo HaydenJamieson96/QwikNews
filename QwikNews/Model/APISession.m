@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import "Article+CoreDataClass.h"
 #import "NSDictionary+OptionalObjectForKey.h"
+#import "TopHeadlinesViewController.h"
 
 @implementation APISession
 
@@ -124,13 +125,11 @@
  */
 +(void)parseArticlesJSONData:(NSDictionary *)data withCompletion:(void (^ __nullable)(void))completion {
     NSError *jsonError = nil;
-    
     NSPersistentContainer *container = [[CoreDataManager sharedManager] persistentContainer];
     [container performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         if(!jsonError){
             NSArray *articlesArray = [data objectForKey:@"articles"];
             for(NSDictionary *articleDict in articlesArray){
-               // [NSFetchedResultsController deleteCacheWithName:nil];
                 NSFetchRequest *fetchRequest = [Article fetchRequest];
                 
                 //id and name
