@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Article+CoreDataClass.h"
+//#import "Category+CoreDataClass.h"
 
 @interface CoreDataManager : NSObject
 
@@ -19,6 +20,8 @@
 - (void)saveContext;
 
 @property (strong, nonatomic) Article *selectedArticle;
+
+//@property (strong, nonatomic) Category *selectedCategory;
 
 @property (strong, nonatomic) NSCache *imageCache;
 

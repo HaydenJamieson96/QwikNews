@@ -114,6 +114,32 @@
     [dataTask resume];
 }
 
+#pragma mark - Article by Category Data Session
+
+/*
+ @param category - The category to which the JSON will be filtered on
+ @param completion - A completion block to signal that the function has completed
+ @brief - Uses AFNetworking to set up a data task for the given URL
+ */
++(void)createArticlesJSONDataSession:(NSString *)category withCompletionBlock:(void (^ __nullable)(void))completion {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"https://newsapi.org/v2/top-headlines?category=%@&language=en&apiKey=6ae541e0e9c94ceb9fde0b71b86d7eef", category]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else if (responseObject){
+            [APISession parseArticlesJSONData:responseObject withCompletion:completion];
+        } else {
+            NSLog(@"%@ %@", response, responseObject);
+        }
+    }];
+    [dataTask resume];
+}
+
 #pragma mark - Article Core Data
 
 /*

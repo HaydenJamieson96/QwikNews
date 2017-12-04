@@ -18,4 +18,6 @@
 
 +(void)parseArticlesJSONData:(NSDictionary *_Nonnull)data withCompletion:(void (^ __nullable)(void))completion;
 
++(void)createArticlesJSONDataSession:(NSString *_Nullable)category withCompletionBlock:(void (^ __nullable)(void))completion;
+
 @end

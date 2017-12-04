@@ -117,13 +117,13 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 -(void)configureCell:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     Article *article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    //cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    NSString *handleATS = [article.urltoimage stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:handleATS]
-                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    //NSString *handleATS = [article.urltoimage stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+    //[cell.imageView sd_setImageWithURL:[NSURL URLWithString:handleATS]
+      //                placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 
-    cell.imageView.autoresizingMask = UIViewAutoresizingNone;
+    //cell.imageView.autoresizingMask = UIViewAutoresizingNone;
     
     [cell.textLabel setTextColor:[UIColor flatGreenColorDark]];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:20.0];
@@ -135,17 +135,12 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 
     cell.layer.cornerRadius = 20;
     cell.layer.masksToBounds = YES;
-    cell.imageView.clipsToBounds = YES;
+    //cell.imageView.clipsToBounds = YES;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return 60;
 }
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [cell.imageView setFrame:CGRectMake(0, 0, 10, 10)];
-//    cell.imageView.clipsToBounds = YES;
-//}
 
 -(void)configureSwipeButtons:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:[UIColor flatGreenColorDark] callback:^BOOL(MGSwipeTableCell *sender) {

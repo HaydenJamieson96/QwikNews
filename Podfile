@@ -10,6 +10,7 @@ target 'QwikNews' do
   pod 'MGSwipeTableCell'
   pod 'SDWebImage', '~> 4.0'
   pod 'CBZSplashView', '~> 1.0.0'
+  pod 'SVWebViewController'
   # Pods for QwikNews
 
   target 'QwikNewsTests' do

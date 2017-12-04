@@ -12,6 +12,7 @@
 #import "Category+CoreDataClass.h"
 #import "CategoryCollectionViewCell.h"
 #import "CBZSplashView.h"
+#import "ArticleListViewController.h"
 
 @interface CategoriesViewController ()
 
@@ -30,7 +31,7 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     [super viewDidLoad];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     
-    UIImage *icon = [UIImage imageNamed:@"news.png"];
+    UIImage *icon = [UIImage imageNamed:@"lettern.png"];
     UIColor *color = [UIColor colorWithRed:0.334 green:0.729 blue:0.425 alpha:1.0];
     CBZSplashView *splashView = [CBZSplashView splashViewWithIcon:icon backgroundColor:color];
     
@@ -209,6 +210,8 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    ArticleListViewController *articleListVC = [ArticleListViewController new];
+    articleListVC.selectedCategory = [self.collectionViewData objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:showArticleSegueID sender:self];
 }
 

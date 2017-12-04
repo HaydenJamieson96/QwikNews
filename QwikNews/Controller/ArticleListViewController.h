@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Category+CoreDataClass.h"
 
 @interface ArticleListViewController : UIViewController
+
+@property (strong, nonatomic) Category *selectedCategory;
 
 @end
