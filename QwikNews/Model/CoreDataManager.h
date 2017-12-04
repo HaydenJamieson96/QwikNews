@@ -23,6 +23,6 @@
 
 @property (strong, nonatomic) Categ *selectedCategory;
 
-@property (strong, nonatomic) NSCache *imageCache;
+@property (strong, nonatomic) NSString *storedSpeech;
 
 @end

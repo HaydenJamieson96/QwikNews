@@ -47,9 +47,18 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"%@",self.manager.selectedCategory.category.lowercaseString);
-    self.navigationItem.title = self.manager.selectedCategory.category.capitalizedString;
-    [APISession createArticlesJSONDataSession:self.manager.selectedCategory.category.lowercaseString withCompletionBlock:nil];
+    self.storedSpeech = self.manager.storedSpeech;
+    if(self.storedSpeech){
+        NSLog(@"%@",self.storedSpeech.capitalizedString);
+        self.navigationItem.title = self.storedSpeech.capitalizedString;
+        [APISession createArticlesJSONDataSession:self.storedSpeech.lowercaseString withCompletionBlock:nil];
+        self.manager.storedSpeech = nil;
+        self.storedSpeech = nil;
+    } else {
+        NSLog(@"%@",self.manager.selectedCategory.category.lowercaseString);
+        self.navigationItem.title = self.manager.selectedCategory.category.capitalizedString;
+        [APISession createArticlesJSONDataSession:self.manager.selectedCategory.category.lowercaseString withCompletionBlock:nil];
+    }
 }
 
 /*
@@ -136,8 +145,11 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     [NSFetchedResultsController deleteCacheWithName:nil];
     NSFetchRequest *fetchRequest = [Article fetchRequest];
     
-    NSSortDescriptor *nameSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    //self.source.category.name == category
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.source.category.category == %@", self.manager.selectedCategory.category];
     
+    NSSortDescriptor *nameSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    //[fetchRequest setPredicate:predicate];
     fetchRequest.sortDescriptors = @[nameSort];
     [fetchRequest setFetchBatchSize:20];
     

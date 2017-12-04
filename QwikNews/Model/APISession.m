@@ -13,6 +13,7 @@
 #import "Article+CoreDataClass.h"
 #import "NSDictionary+OptionalObjectForKey.h"
 #import "TopHeadlinesViewController.h"
+#import "Source+CoreDataClass.h"
 
 @implementation APISession
 
@@ -41,7 +42,7 @@
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %lu", categoryUUID];
                 [fetchRequest setPredicate:predicate];
                 
-                NSError  *error;
+                NSError *error;
 
                 NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
 
@@ -49,6 +50,16 @@
                     Categ *newCategory = [[Categ alloc] initWithContext:context];
                     newCategory.category = categoryName;
                     newCategory.uuid = [NSString stringWithFormat:@"%lu", (unsigned long)categoryUUID];
+                    
+                    Source *newSource = [[Source alloc] initWithContext:context];
+                    newSource.name = [sourcesDict objectForKey:@"name"];
+                    newSource.desc = [sourcesDict objectForKey:@"description"];
+                    newSource.urlString = [sourcesDict objectForKey:@"url"];
+                    newSource.uuid = [sourcesDict objectForKey:@"id"];
+                    
+                    newSource.category = newCategory;
+                    [newCategory addSourceObject:newSource];
+                    
                     NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.uuid, newCategory.category]);
                     
                     NSError *contextError = nil;
@@ -178,9 +189,16 @@
                     newArticle.author = [articleDict optionalObjectForKey:@"author" defaultValue:nil];
                     newArticle.title = [articleDict optionalObjectForKey:@"title" defaultValue:nil];
                     newArticle.desc = [articleDict optionalObjectForKey:@"description" defaultValue:nil];
-                    newArticle.url = [articleDict optionalObjectForKey:@"url"defaultValue:nil];
+                    newArticle.url = [articleDict optionalObjectForKey:@"url" defaultValue:nil];
                     newArticle.urltoimage = [articleDict optionalObjectForKey:@"urlToImage" defaultValue:nil];
                     newArticle.publishedate = [articleDict optionalObjectForKey:@"publishedAt" defaultValue:nil];
+                    
+                    Source *newSource = [[Source alloc] initWithContext:context];
+                    newSource.name = newArticle.name;
+                    newSource.uuid = newArticle.uuid;
+                    
+                    newArticle.source = newSource;
+                    
                     NSLog(@"%@ %@ %@ %@", newArticle.name, newArticle.author,  newArticle.title, newArticle.desc);
                     NSError *contextError = nil;
                     if(![context save:&contextError]){

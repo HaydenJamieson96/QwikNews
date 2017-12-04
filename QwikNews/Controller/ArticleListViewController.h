@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) Categ *selectedCategory;
+@property (strong, nonatomic) NSString *storedSpeech;
 
 @end

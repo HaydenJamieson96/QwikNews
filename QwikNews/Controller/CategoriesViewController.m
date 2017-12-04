@@ -82,13 +82,20 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     if (self.audioEngine.isRunning) {
         [self.audioEngine stop];
         [self.recognitionRequest endAudio];
+        if(self.manager.storedSpeech){
+            [self performSegueWithIdentifier:showArticleSegueID sender:self];
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Whoops!" message:@"You have not said anything... Talk dummy" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+            }];
+            [alert addAction:okButton];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     } else {
         [self startListening];
-        if(self.recordedString){
-            //perform segue and pass string across
-        }
-        self.recordedString = nil;
+        NSLog(@"done");
     }
+    
 }
 
 /*
@@ -114,8 +121,8 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     self.recognitionTask = [self.speechRecognizer recognitionTaskWithRequest:self.recognitionRequest resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
         BOOL isFinal = NO;
         if (result) {
-            self.recordedString = result.bestTranscription.formattedString;
             NSLog(@"RESULT:%@",result.bestTranscription.formattedString);
+            self.manager.storedSpeech = result.bestTranscription.formattedString;
             isFinal = !result.isFinal;
         }
         if (error) {
@@ -210,8 +217,6 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    //ArticleListViewController *articleListVC = [ArticleListViewController new];
-    //articleListVC.selectedCategory = [self.collectionViewData objectAtIndex:indexPath.item];
     self.manager.selectedCategory = [self.collectionViewData objectAtIndex:indexPath.item];
     [self performSegueWithIdentifier:showArticleSegueID sender:self];
 }
