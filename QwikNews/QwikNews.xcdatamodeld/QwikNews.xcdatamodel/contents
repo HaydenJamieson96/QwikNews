@@ -10,12 +10,12 @@
         <attribute name="urltoimage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+    <entity name="Categ" representedClassName="Categ" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Article" positionX="-63" positionY="0" width="128" height="165"/>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Categ" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>

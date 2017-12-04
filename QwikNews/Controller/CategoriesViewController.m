@@ -9,7 +9,7 @@
 #import "CategoriesViewController.h"
 #import "CoreDataManager.h"
 #import "APISession.h"
-#import "Category+CoreDataClass.h"
+#import "Categ+CoreDataClass.h"
 #import "CategoryCollectionViewCell.h"
 #import "CBZSplashView.h"
 #import "ArticleListViewController.h"
@@ -155,7 +155,7 @@ static NSString *showArticleSegueID = @"ShowArticleList";
  @brief - Perform a fetch request for the Category entity, sorting by category field. Append each Category object into array for collection view data source
  */
 -(void)fetchCoreData {
-    NSFetchRequest *fetchRequest = [Category fetchRequest];
+    NSFetchRequest *fetchRequest = [Categ fetchRequest];
     NSSortDescriptor *categorySort = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
     fetchRequest.sortDescriptors = @[categorySort];
     [fetchRequest setFetchBatchSize:20];
@@ -184,7 +184,7 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 }
 
 -(void)configureCell:(CategoryCollectionViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    Category *newCategory = [self.collectionViewData objectAtIndex:indexPath.row];
+    Categ *newCategory = [self.collectionViewData objectAtIndex:indexPath.row];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [cell.categoryLabel setText:newCategory.category.capitalizedString];
@@ -210,8 +210,9 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ArticleListViewController *articleListVC = [ArticleListViewController new];
-    articleListVC.selectedCategory = [self.collectionViewData objectAtIndex:indexPath.row];
+    //ArticleListViewController *articleListVC = [ArticleListViewController new];
+    //articleListVC.selectedCategory = [self.collectionViewData objectAtIndex:indexPath.item];
+    self.manager.selectedCategory = [self.collectionViewData objectAtIndex:indexPath.item];
     [self performSegueWithIdentifier:showArticleSegueID sender:self];
 }
 

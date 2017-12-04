@@ -9,6 +9,12 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+            <string>Avenir-Heavy</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--CategoriesViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -98,20 +104,66 @@
             </objects>
             <point key="canvasLocation" x="1488.8" y="-238.83058470764618"/>
         </scene>
-        <!--Article List-->
+        <!--Article List View Controller-->
         <scene sceneID="pUk-mi-xpX">
             <objects>
-                <viewController title="Article List" id="U5L-lP-hIx" customClass="ArticleListViewController" sceneMemberID="viewController">
+                <viewController id="U5L-lP-hIx" customClass="ArticleListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KMo-2M-KtO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-1w-IHN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" textLabel="Xtz-Qw-hSQ" detailTextLabel="V6F-tc-bkc" style="IBUITableViewCellStyleSubtitle" id="a10-ys-qaY">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a10-ys-qaY" id="w00-Xp-KPr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xtz-Qw-hSQ">
+                                                    <rect key="frame" x="15" y="-3" width="41.5" height="27.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                    <color key="textColor" red="0.1911550909280777" green="0.6378670334815979" blue="0.26147949695587158" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V6F-tc-bkc">
+                                                    <rect key="frame" x="15" y="24.5" width="55" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="U5L-lP-hIx" id="bOm-GT-gDM"/>
+                                    <outlet property="delegate" destination="U5L-lP-hIx" id="1AI-Hi-wR7"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xvj-1w-IHN" firstAttribute="leading" secondItem="n1N-mL-JBb" secondAttribute="leading" id="fni-yj-Zio"/>
+                            <constraint firstItem="Xvj-1w-IHN" firstAttribute="trailing" secondItem="n1N-mL-JBb" secondAttribute="trailing" id="j6h-Ld-3PR"/>
+                            <constraint firstItem="Xvj-1w-IHN" firstAttribute="bottom" secondItem="n1N-mL-JBb" secondAttribute="bottom" id="owb-I4-OOG"/>
+                            <constraint firstItem="Xvj-1w-IHN" firstAttribute="top" secondItem="n1N-mL-JBb" secondAttribute="top" id="yqF-sH-opq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="n1N-mL-JBb"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Xvj-1w-IHN" id="YCA-4Y-XXI"/>
+                        <segue destination="WAp-Sp-QZ9" kind="show" identifier="ShowArticleInfoSegue" id="2w8-KD-zf2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4s-kz-GIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2407" y="-239"/>
+            <point key="canvasLocation" x="2405.5999999999999" y="-239.73013493253376"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="A1y-ON-f2s">
@@ -268,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2kY-Gy-Pir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3596" y="187.55622188905548"/>
+            <point key="canvasLocation" x="3151" y="198"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5BD-mq-tYs">
@@ -333,4 +385,7 @@
         <image name="time.png" width="32" height="32"/>
         <image name="wallpapertrump.jpg" width="750" height="919"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2w8-KD-zf2"/>
+    </inferredMetricsTieBreakers>
 </document>

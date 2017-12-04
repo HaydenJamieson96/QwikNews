@@ -8,7 +8,7 @@
 
 #import "APISession.h"
 #import "CoreDataManager.h"
-#import "Category+CoreDataClass.h"
+#import "Categ+CoreDataClass.h"
 #import "AFNetworking.h"
 #import "Article+CoreDataClass.h"
 #import "NSDictionary+OptionalObjectForKey.h"
@@ -33,7 +33,7 @@
         if(!jsonError){
             NSArray *sourcesArray = [data objectForKey:@"sources"];
             for(NSDictionary *sourcesDict in sourcesArray){
-                NSFetchRequest *fetchRequest = [Category fetchRequest];
+                NSFetchRequest *fetchRequest = [Categ fetchRequest];
                 
                 NSString *categoryName = [sourcesDict optionalObjectForKey:@"category" defaultValue:nil];
                 NSUInteger categoryUUID = [[categoryName lowercaseString] hash];
@@ -46,7 +46,7 @@
                 NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
 
                 if(![items firstObject]){
-                    Category *newCategory = [[Category alloc] initWithContext:context];
+                    Categ *newCategory = [[Categ alloc] initWithContext:context];
                     newCategory.category = categoryName;
                     newCategory.uuid = [NSString stringWithFormat:@"%lu", (unsigned long)categoryUUID];
                     NSLog(@"%@", [NSString stringWithFormat:@"%@ and %@", newCategory.uuid, newCategory.category]);

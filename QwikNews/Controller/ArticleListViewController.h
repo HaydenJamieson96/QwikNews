@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Category+CoreDataClass.h"
+#import "Categ+CoreDataClass.h"
 
-@interface ArticleListViewController : UIViewController
+@interface ArticleListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) Category *selectedCategory;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) Categ *selectedCategory;
 
 @end
