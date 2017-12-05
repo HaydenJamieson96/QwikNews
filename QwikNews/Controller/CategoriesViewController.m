@@ -13,6 +13,7 @@
 #import "CategoryCollectionViewCell.h"
 #import "CBZSplashView.h"
 #import "ArticleListViewController.h"
+#import <ChameleonFramework/Chameleon.h>
 
 @interface CategoriesViewController ()
 
@@ -74,6 +75,17 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL darkEnabled = [defaults boolForKey:@"theme_preference"];
+    if(darkEnabled){
+        [self.tabBarController.tabBar setTintColor:FlatBlackDark];
+    } else {
+        [self.tabBarController.tabBar setTintColor:FlatGreenDark];
+    }
+
 }
 
 #pragma mark - Speech to text recognition

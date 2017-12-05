@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <ChameleonFramework/Chameleon.h>
+#import "CategoriesViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +19,34 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //Set up the default values
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *rotationDefaults = [NSDictionary dictionaryWithObject:@"YES"
+                                                            forKey:@"rotation_preference"];
+    NSDictionary *themeDefaults = [NSDictionary dictionaryWithObject:@"NO"
+                                                            forKey:@"theme_preference"];
+    
+    [defaults registerDefaults:rotationDefaults];
+    [defaults registerDefaults:themeDefaults];
+    [defaults synchronize];
     [Chameleon setGlobalThemeUsingPrimaryColor:(UIColor *)FlatGreenDark withContentStyle:(UIContentStyle)UIContentStyleContrast];
+    
     return YES;
+}
+
+
+#pragma mark - Settings Bundle Rotation Handling
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL enabled = [defaults boolForKey:@"rotation_preference"];
+    
+    if (enabled) {
+        return UIInterfaceOrientationMaskPortrait;
+    } else {
+        return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+    }
 }
 
 
@@ -42,6 +69,15 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL darkEnabled = [defaults boolForKey:@"theme_preference"];
+    if(darkEnabled){
+        [Chameleon setGlobalThemeUsingPrimaryColor:(UIColor *)FlatBlackDark withContentStyle:(UIContentStyle)UIContentStyleContrast];
+    } else {
+        [Chameleon setGlobalThemeUsingPrimaryColor:(UIColor *)FlatGreenDark withContentStyle:(UIContentStyle)UIContentStyleContrast];
+    }
+
 }
 
 

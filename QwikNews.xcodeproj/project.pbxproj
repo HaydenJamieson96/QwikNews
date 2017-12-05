@@ -12,6 +12,7 @@
 		032AE4241FD00A0800F3E020 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 032AE4211FD00A0800F3E020 /* checked.png */; };
 		0337EE561FD1935400D2E05A /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = 0337EE551FD1935400D2E05A /* news.png */; };
 		0337EE581FD19D7900D2E05A /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 0337EE571FD19D7900D2E05A /* time.png */; };
+		036D195C1FD6D36600FAEA4C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 036D195B1FD6D36600FAEA4C /* Settings.bundle */; };
 		03ADCCE61FD2B39F00C2B723 /* lettern.png in Resources */ = {isa = PBXBuildFile; fileRef = 03ADCCE51FD2B39E00C2B723 /* lettern.png */; };
 		03C3F5F51FCEC2FB0094D53D /* ArticleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */; };
 		03CFB0A21FCC2D7E0063923D /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CFB0A11FCC2D7E0063923D /* CoreDataManager.m */; };
@@ -52,6 +53,7 @@
 		032AE4211FD00A0800F3E020 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		0337EE551FD1935400D2E05A /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
 		0337EE571FD19D7900D2E05A /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		036D195B1FD6D36600FAEA4C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		03ADCCE51FD2B39E00C2B723 /* lettern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lettern.png; sourceTree = "<group>"; };
 		03C3F5F31FCEC2FB0094D53D /* ArticleListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListViewController.h; sourceTree = "<group>"; };
 		03C3F5F41FCEC2FB0094D53D /* ArticleListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListViewController.m; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				03ED35411FCC29EB00919765 /* Info.plist */,
 				03ED35421FCC29EB00919765 /* main.m */,
 				03ED35391FCC29EB00919765 /* QwikNews.xcdatamodeld */,
+				036D195B1FD6D36600FAEA4C /* Settings.bundle */,
 			);
 			path = QwikNews;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				032AE4231FD00A0800F3E020 /* heart.png in Resources */,
 				03ADCCE61FD2B39F00C2B723 /* lettern.png in Resources */,
 				032AE4221FD00A0800F3E020 /* delete.png in Resources */,
+				036D195C1FD6D36600FAEA4C /* Settings.bundle in Resources */,
 				03ED40761FD15C4F009FD9C6 /* placeholder256.png in Resources */,
 				03ED35401FCC29EB00919765 /* LaunchScreen.storyboard in Resources */,
 				03ED353D1FCC29EB00919765 /* Assets.xcassets in Resources */,

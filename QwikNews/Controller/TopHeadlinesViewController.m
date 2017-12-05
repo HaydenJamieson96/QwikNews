@@ -143,11 +143,11 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 }
 
 -(void)configureSwipeButtons:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
-    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:[UIColor flatGreenColorDark] callback:^BOOL(MGSwipeTableCell *sender) {
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:FlatGreenDark callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"Convenience callback for check buttons!");
         [self swipeSelectArticleAtIndexPath:indexPath];
         return YES;
-    }],[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"heart.png"] backgroundColor:[UIColor flatBlueColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    }],[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"heart.png"] backgroundColor:FlatBlue callback:^BOOL(MGSwipeTableCell *sender) {
         return YES;
     }]];
     cell.leftExpansion.buttonIndex = 0;
@@ -155,11 +155,11 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     cell.leftExpansion.fillOnTrigger = YES;
     cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
     
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete.png"] backgroundColor:[UIColor flatRedColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete.png"] backgroundColor:FlatRed callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"Convenience callback for Delete button!");
         [self deleteArticleAtIndexPath:indexPath];
         return YES;
-    }],[MGSwipeButton buttonWithTitle:@"More" backgroundColor:[UIColor flatGrayColor] callback:^BOOL(MGSwipeTableCell *sender) {
+    }],[MGSwipeButton buttonWithTitle:@"More" backgroundColor:FlatGray callback:^BOOL(MGSwipeTableCell *sender) {
         return YES;
     }]];
     cell.rightExpansion.buttonIndex = 0;

@@ -79,7 +79,7 @@
  @brief - Helper function to configure the controls of the page with Article information
  */
 -(void)configurePageInfoWithArticle:(Article *)article {
-    self.navigationItem.title = article.name;
+    self.navigationItem.title = article.author;
     NSString *handleATS = [article.urltoimage stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:handleATS]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
