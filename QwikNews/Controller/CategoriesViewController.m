@@ -78,6 +78,9 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 
 #pragma mark - Speech to text recognition
 
+/*
+ @brief - Start recording the user, if the audio engine is running it means they are being recorded already. Navigate to the articles page if the user actually said something, show an alert if not
+ */
 - (IBAction)recordUser:(id)sender {
     if (self.audioEngine.isRunning) {
         [self.audioEngine stop];
@@ -94,8 +97,7 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     } else {
         [self startListening];
         NSLog(@"done");
-    }
-    
+    }    
 }
 
 /*
@@ -159,11 +161,11 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 #pragma mark - Fetch CoreData
 
 /*
- @brief - Perform a fetch request for the Category entity, sorting by category field. Append each Category object into array for collection view data source
+ @brief - Perform a fetch request for the Category entity, sorting by name field. Append each Category object into array for collection view data source
  */
 -(void)fetchCoreData {
     NSFetchRequest *fetchRequest = [Categ fetchRequest];
-    NSSortDescriptor *categorySort = [NSSortDescriptor sortDescriptorWithKey:@"category" ascending:YES];
+    NSSortDescriptor *categorySort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     fetchRequest.sortDescriptors = @[categorySort];
     [fetchRequest setFetchBatchSize:20];
  
@@ -194,7 +196,7 @@ static NSString *showArticleSegueID = @"ShowArticleList";
     Categ *newCategory = [self.collectionViewData objectAtIndex:indexPath.row];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [cell.categoryLabel setText:newCategory.category.capitalizedString];
+        [cell.categoryLabel setText:newCategory.name.capitalizedString];
         cell.contentView.layer.cornerRadius = 10.f;
         cell.contentView.layer.backgroundColor = [UIColor colorWithRed:0.334 green:0.729 blue:0.425 alpha:1.0].CGColor;
         cell.contentView.layer.borderWidth = 1.0f;

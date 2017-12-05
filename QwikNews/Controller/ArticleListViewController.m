@@ -47,17 +47,15 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.storedSpeech = self.manager.storedSpeech;
-    if(self.storedSpeech){
-        NSLog(@"%@",self.storedSpeech.capitalizedString);
-        self.navigationItem.title = self.storedSpeech.capitalizedString;
-        [APISession createArticlesJSONDataSession:self.storedSpeech.lowercaseString withCompletionBlock:nil];
+    if(self.manager.storedSpeech){
+        NSLog(@" did appear : %@",self.manager.storedSpeech.capitalizedString);
+        self.navigationItem.title = self.manager.storedSpeech.capitalizedString;
+        [APISession createArticlesJSONDataSession:self.manager.storedSpeech.lowercaseString withCompletionBlock:nil];
         self.manager.storedSpeech = nil;
-        self.storedSpeech = nil;
     } else {
-        NSLog(@"%@",self.manager.selectedCategory.category.lowercaseString);
-        self.navigationItem.title = self.manager.selectedCategory.category.capitalizedString;
-        [APISession createArticlesJSONDataSession:self.manager.selectedCategory.category.lowercaseString withCompletionBlock:nil];
+        NSLog(@"%@",self.manager.selectedCategory.name.lowercaseString);
+        self.navigationItem.title = self.manager.selectedCategory.name.capitalizedString;
+        [APISession createArticlesJSONDataSession:self.manager.selectedCategory.name.lowercaseString withCompletionBlock:nil];
     }
 }
 
@@ -145,19 +143,26 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     [NSFetchedResultsController deleteCacheWithName:nil];
     NSFetchRequest *fetchRequest = [Article fetchRequest];
     
-    //self.source.category.name == category
-    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.source.category.category == %@", self.manager.selectedCategory.category];
-    
-    NSSortDescriptor *nameSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    //[fetchRequest setPredicate:predicate];
-    fetchRequest.sortDescriptors = @[nameSort];
+    NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:@"publishedate" ascending:YES];
+    fetchRequest.sortDescriptors = @[dateSort];
     [fetchRequest setFetchBatchSize:20];
     
+    if(self.manager.storedSpeech){
+        NSLog(@"Stored : %@", self.manager.storedSpeech.lowercaseString);
+        NSPredicate *correctCategory = [NSPredicate predicateWithFormat:@"source.category.name == %@", self.manager.storedSpeech.lowercaseString];
+        [fetchRequest setPredicate:correctCategory];
+    } else {
+        NSPredicate *correctCategory = [NSPredicate predicateWithFormat:@"source.category.name == %@", self.manager.selectedCategory.name];
+        [fetchRequest setPredicate:correctCategory];
+    }
+    
+
     NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[[CoreDataManager sharedManager] persistentContainer] viewContext] sectionNameKeyPath:nil cacheName:nil];
     
     
     self.fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
+    self.manager.storedSpeech = nil;
     return _fetchedResultsController;
 }
 

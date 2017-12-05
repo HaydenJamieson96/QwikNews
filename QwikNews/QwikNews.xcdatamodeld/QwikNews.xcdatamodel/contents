@@ -12,7 +12,7 @@
         <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Source" inverseName="articles" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Categ" representedClassName="Categ" syncable="YES" codeGenerationType="class">
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="source" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Source" inverseName="category" inverseEntity="Source" syncable="YES"/>
     </entity>
@@ -26,7 +26,7 @@
     </entity>
     <elements>
         <element name="Article" positionX="-288" positionY="-108" width="128" height="180"/>
-        <element name="Categ" positionX="-299" positionY="135" width="128" height="90"/>
+        <element name="Categ" positionX="-299" positionY="135" width="128" height="88"/>
         <element name="Source" positionX="-540" positionY="18" width="128" height="135"/>
     </elements>
 </model>

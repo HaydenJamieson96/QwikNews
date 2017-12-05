@@ -19,15 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lettern.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ity-jS-J8n">
-                                <rect key="frame" x="97" y="243" width="180" height="180"/>
+                                <rect key="frame" x="157" y="300" width="60" height="66"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Ity-jS-J8n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="97" id="9nf-tr-oHE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ity-jS-J8n" secondAttribute="trailing" constant="98" id="BWs-TB-FCX"/>
-                            <constraint firstItem="Ity-jS-J8n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="223" id="Pj1-LW-NcA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ity-jS-J8n" secondAttribute="bottom" constant="244" id="Qxh-5n-mZx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ity-jS-J8n" secondAttribute="bottom" constant="301" id="5IV-mB-mDI"/>
+                            <constraint firstItem="Ity-jS-J8n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="157" id="Nxe-Rl-DQT"/>
+                            <constraint firstItem="Ity-jS-J8n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="280" id="YHd-0V-oYc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ity-jS-J8n" secondAttribute="trailing" constant="158" id="YST-I8-EIx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
