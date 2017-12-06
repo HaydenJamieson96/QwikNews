@@ -30,8 +30,6 @@
     [defaults registerDefaults:rotationDefaults];
     [defaults registerDefaults:themeDefaults];
     [defaults synchronize];
-    [Chameleon setGlobalThemeUsingPrimaryColor:(UIColor *)FlatGreenDark withContentStyle:(UIContentStyle)UIContentStyleContrast];
-    
     return YES;
 }
 
@@ -72,12 +70,8 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL darkEnabled = [defaults boolForKey:@"theme_preference"];
-    if(darkEnabled){
+    if(darkEnabled)
         [Chameleon setGlobalThemeUsingPrimaryColor:(UIColor *)FlatBlackDark withContentStyle:(UIContentStyle)UIContentStyleContrast];
-    } else {
-        [Chameleon setGlobalThemeUsingPrimaryColor:(UIColor *)FlatGreenDark withContentStyle:(UIContentStyle)UIContentStyleContrast];
-    }
-
 }
 
 

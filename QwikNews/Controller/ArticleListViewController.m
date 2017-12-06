@@ -104,8 +104,8 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
 
 -(void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     Article *article = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [cell.textLabel setText:article.author];
-    [cell.detailTextLabel setText:article.title];
+    [cell.textLabel setText:article.author.capitalizedString];
+    [cell.detailTextLabel setText:article.title.capitalizedString];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

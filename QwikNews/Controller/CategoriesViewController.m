@@ -15,7 +15,7 @@
 #import "ArticleListViewController.h"
 #import <ChameleonFramework/Chameleon.h>
 
-@interface CategoriesViewController ()
+@interface CategoriesViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) CoreDataManager *manager;
 @property (strong, nonatomic) APISession *session;
@@ -166,7 +166,21 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 #pragma mark - Image Picker Controller
 
 - (IBAction)selectImage:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

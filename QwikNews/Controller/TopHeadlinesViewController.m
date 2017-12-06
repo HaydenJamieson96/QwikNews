@@ -127,8 +127,8 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     
     [cell.textLabel setTextColor:[UIColor flatGreenColorDark]];
     cell.textLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:20.0];
-    cell.textLabel.text = article.author;
-    cell.detailTextLabel.text = article.title;
+    cell.textLabel.text = article.author.capitalizedString;
+    cell.detailTextLabel.text = article.title.capitalizedString;
     cell.detailTextLabel.font = [UIFont fontWithName:@"Avenir" size:16.0];
     
     [self configureSwipeButtons:cell forIndexPath:indexPath];
@@ -142,6 +142,9 @@ static NSString *showArticleInfoSegueID = @"ShowArticleInfoSegue";
     return 60;
 }
 
+/*
+ @brief - Configure the swipe buttons for the MGSwipeTableCells. Sets up callback blocks for checked and delete
+ */
 -(void)configureSwipeButtons:(MGSwipeTableCell *)cell forIndexPath:(NSIndexPath *)indexPath {
     cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"checked.png"] backgroundColor:FlatGreenDark callback:^BOOL(MGSwipeTableCell *sender) {
         NSLog(@"Convenience callback for check buttons!");
