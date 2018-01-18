@@ -165,9 +165,31 @@ static NSString *showArticleSegueID = @"ShowArticleList";
 
 #pragma mark - Image Picker Controller
 
+/*
+ @brief - Set up the Image Picker Controller and designate the source type dependent on the device.
+ */
 - (IBAction)selectImage:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
+
+/*
+ @brief - Img Picker delegate function, called when the controller is finished selecting an image, i.e. user chose an image/took a picture
+          Assigns the image to the collection view background
+ */
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 #pragma mark - Fetch CoreData
