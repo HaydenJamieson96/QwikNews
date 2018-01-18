@@ -2,8 +2,8 @@
 //  CoreDataManager.m
 //  QwikNews
 //
-//  Created by TheAppExperts on 11/27/17.
-//  Copyright © 2017 TheAppExperts. All rights reserved.
+//  Created by Hayden Jamieson on 11/27/17.
+//  Copyright © 2017 Hayden Jamieson. All rights reserved.
 //
 
 #import "CoreDataManager.h"
