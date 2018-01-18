@@ -2,8 +2,8 @@
 //  NSDictionary+OptionalObjectForKey.h
 //  QwikNews
 //
-//  Created by TheAppExperts on 11/30/17.
-//  Copyright © 2017 TheAppExperts. All rights reserved.
+//  Created by Hayden Jamieson on 11/30/17.
+//  Copyright © 2017 Hayden Jamieson. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
