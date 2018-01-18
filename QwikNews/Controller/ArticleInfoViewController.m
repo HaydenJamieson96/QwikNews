@@ -2,8 +2,8 @@
 //  ArticleInfoViewController.m
 //  QwikNews
 //
-//  Created by TheAppExperts on 12/1/17.
-//  Copyright © 2017 TheAppExperts. All rights reserved.
+//  Created by Hayden Jamieson on 12/1/17.
+//  Copyright © 2017 Hayden Jamieson. All rights reserved.
 //
 
 #import "ArticleInfoViewController.h"
