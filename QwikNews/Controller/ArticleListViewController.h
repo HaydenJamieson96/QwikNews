@@ -2,8 +2,8 @@
 //  ArticleListViewController.h
 //  QwikNews
 //
-//  Created by TheAppExperts on 11/29/17.
-//  Copyright © 2017 TheAppExperts. All rights reserved.
+//  Created by Hayden Jamieson on 11/29/17.
+//  Copyright © 2017 Hayden Jamieson. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
